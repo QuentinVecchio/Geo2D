@@ -24,7 +24,8 @@ public class ControllerServeur {
 		fenetre.setTitle("ServeurGeo2D");
 		fenetre.setLocationRelativeTo(null);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		fenetre.setSize(400, 400);
+		fenetre.setSize(500, 505);
+		fenetre.setResizable(false);
 		fenetre.add(this.onglets);
 		this.connexions = new ControllerConnexion(Integer.parseInt(this.config.getPort()));
 		this.onglets.add("Connexions",this.connexions.getView());

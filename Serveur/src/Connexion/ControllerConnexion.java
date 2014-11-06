@@ -18,6 +18,7 @@ public class ControllerConnexion
 	
 	public JPanel getView()
 	{
+		this.view.refresh();
 		return this.view;
 	}
 }

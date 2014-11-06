@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import Erreur.Erreur;
 
 
@@ -49,9 +51,6 @@ public class Configuration
 		{
 			port = "2107";
 		}
-
-   
-        
 	}
 
 	public String getAdresseIp()
@@ -76,7 +75,8 @@ public class Configuration
 			try
 			{
 				fos = new FileOutputStream(new File("port.txt"));
-				fos.write(this.port.getBytes());
+				fos.write(port.getBytes());
+				JOptionPane.showMessageDialog(null, "La modification prendra effet au redémarrage du serveur.", "Attention", JOptionPane.WARNING_MESSAGE);
 			}
 			catch(IOException e)
 			{

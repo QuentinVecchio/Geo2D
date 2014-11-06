@@ -12,15 +12,16 @@ public class ViewConnexion extends JPanel
 	ArrayList<Connexion> connexions = new ArrayList<Connexion>();
 	private String title[] = {"Nom","Adresse IP"};
 	private JTable tableau;
-	private Object data[][] = new Object[1000][2];
+	private Object[][] data = new Object[1000][2];
 	
 	public ViewConnexion()
 	{
 		this.add(new JScrollPane(tableau));	
 	}
 	
-	public void initialisation()
+	public void refresh()
 	{
+		System.out.println("refresh");
 		for(int i=0;i<this.connexions.size();i++)
 		{
 			Connexion c = (Connexion) connexions.get(i);
@@ -30,12 +31,14 @@ public class ViewConnexion extends JPanel
 				data[i][1] = c.getAdresseIp();
 			}
 		}
+		this.removeAll();
 		this.tableau = new JTable(data, this.title);
+		this.add(new JScrollPane(tableau));
 	}
 	
 	public void addConnexion(Connexion c)
 	{
 		connexions.add(c);
-		this.initialisation();
+		this.refresh();
 	}
 }
