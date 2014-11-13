@@ -3,25 +3,31 @@
 
 #include <vector>
 #include "Headers/Segment.h"
-class Polygone :
-	public Segment
+#include <QtXml>
+
+class Polygone : public Figure
 {
-
+private:
+    vector<Segment*> v;
 public:
-	vector<Segment*> v;
-	Polygone(const Point p1, const Point p2, const Couleur c, const vector<Segment*> polygone);
+    Polygone(const Point&, const Couleur::Couleurs);
+    Polygone(const Point &p, const Couleur::Couleurs, const vector<Segment*> polygone);
+    Polygone(const Polygone&);
+    ~Polygone();
 
-	/*Getters & Setters*/
-	Segment getSegment(const int i)const;
+    void add(Segment *s);
+
+    vector<Segment*> getV() const;
+    Segment* getSegment(const int i)const;
 	int nbElements()const;
 
-	/*Fonctions*/
 	void translation(const Point p);
-	//void rotation();
-	//void homothetie();
-	friend ostream& operator <<(ostream& flux, const Polygone& p);
+    void rotation();
+    void homothetie();
 
-	~Polygone(){};
+    Polygone* copy() const;
+    QDomElement toXml(QDomDocument *) const;
+	friend ostream& operator <<(ostream& flux, const Polygone& p);
 };
 
 #endif

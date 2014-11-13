@@ -1,15 +1,15 @@
 #ifndef COULEUR_H
 #define COULEUR_H
 
-#include <string>
+#include <QString>
+
 using namespace std;
 class Couleur
 {
 private:
-	static const string strCouleur[];
-	// strCouleur[NOIR] ==> "NOIR"
+    static const QString strCouleur[];
 public:
-	static string getCouleur(const int i);
+    static QString getCouleur(const int i);
 	enum Couleurs { BLACK, BLUE, RED, GREEN, YELLOW, CYAN, NB__ };
 };
 #endif

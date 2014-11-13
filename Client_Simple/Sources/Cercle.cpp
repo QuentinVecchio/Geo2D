@@ -1,27 +1,82 @@
 #include "Headers/Cercle.h"
 
 
-Cercle::Cercle(const Point p, const float r, const Couleur c):Figure(p,c){
-	this->rayon = r;
-}
-/*Getters & Setters*/
-float Cercle::getRayon()const{
-	return this->rayon;
-}
-void Cercle::setRayon(const float r){
+Cercle::Cercle(const Point p, const float r, const Couleur::Couleurs c):Figure(p,c)
+{
 	this->rayon = r;
 }
 
-/*Fonctions*/
-void Cercle::translation(const Point p){
+Cercle::Cercle(const Cercle& c)
+{
+    this->rayon = c.getRayon();
+    this->setP1(c.getP1());
+    this->setC(this->getC());
+}
+
+Cercle::~Cercle()
+{
+
+}
+
+float Cercle::getRayon() const
+{
+	return this->rayon;
+}
+
+void Cercle::setRayon(const float r)
+{
+	this->rayon = r;
+}
+
+void Cercle::translation(const Point p)
+{
 	Figure::translation(p);
 }
-//void rotation();
-//void homothetie();
-void Cercle::afficher(ostream& flux) const{
+
+void Cercle::rotation()
+{
+
+}
+
+void Cercle::homothetie()
+{
+
+}
+
+QDomElement Cercle::toXml(QDomDocument * dom) const
+{
+    //Création de la balise cercle
+    QDomElement nom = dom->createElement("cercle");
+    //Création de la balise rayon
+    QDomElement rayon = dom->createElement("rayon");
+    QString a;
+    a.setNum(this->getRayon());
+    QDomText r = dom->createTextNode(a);
+    rayon.appendChild(r);
+    nom.appendChild(rayon);
+    //Création de la balise point
+    QDomElement point = this->getP1().toXml(dom);
+    nom.appendChild(point);
+    //Création de la balise couleur
+    QDomElement couleur = dom->createElement("couleur");
+    QDomText c = dom->createTextNode(Couleur::getCouleur(this->getC()));
+    couleur.appendChild(c);
+    nom.appendChild(couleur);
+    return nom;
+}
+
+Cercle* Cercle::copy() const
+{
+    return new Cercle(*this);
+}
+
+void Cercle::afficher(ostream& flux) const
+{
 	flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << "] " << endl;
 }
-ostream& operator <<(ostream& flux, const Cercle& c){
+
+ostream& operator <<(ostream& flux, const Cercle& c)
+{
 	c.afficher(flux);
 	return flux;
 }

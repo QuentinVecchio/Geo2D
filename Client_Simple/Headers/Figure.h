@@ -4,26 +4,34 @@
 #include "Headers/Point.h"
 #include "Headers/Couleur.h"
 #include <iostream>
+#include <QtXml>
+
 using namespace std;
 
 class Figure{
 private:
-	Couleur c;
+    Couleur::Couleurs c;
 	Point p1;
+protected:
+    Figure();
+    Figure(const Figure&);
+    Figure(const Point p1, const Couleur::Couleurs c);
 public:
-	Figure(){};
-	Figure(const Point p1, const Couleur c);
-	void translation(Point p);
-	void homothetie();
-	void rotation();
+    ~Figure();
+
+    virtual void translation(Point p);
+    virtual void homothetie();
+    virtual void rotation();
 
 	Point getP1() const;
-	void setP1(const Point p1);
+    Couleur::Couleurs getC()const;
 
-	Couleur getC()const;
-	void setC(const Couleur c);
+	void setP1(const Point p1);	
+    void setC(const Couleur::Couleurs c);
 
-	void afficher(ostream& flux) const;
+    virtual QDomElement toXml(QDomDocument *) const = 0;
+    virtual void afficher(ostream& flux) const;
+    virtual Figure* copy() const = 0;
 	friend ostream& operator <<(ostream& flux, const Figure& f);
 };
 #endif
