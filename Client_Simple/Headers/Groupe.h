@@ -1,26 +1,33 @@
 #ifndef GROUPE_H
 #define GROUPE_H
 
+#include <QtXml>
 #include <vector>
 #include "Headers/Figure.h"
-class Groupe :
-	public Figure
-{
-public:
-	vector<Figure*> v;
-	Groupe(const Point p1, const Couleur c, const vector<Figure*> polygone);
 
-	/*Getters & Setters*/
-	Figure getFigure(const int i)const;
+class Groupe
+{
+private:
+    vector<Figure*> v;
+public:
+    Groupe();
+    Groupe(const vector<Figure*> polygone);
+    Groupe(const Groupe&);
+    ~Groupe();
+
+    void add(Figure *);
+
+    vector<Figure*> getV() const;
+    Figure* getFigure(const int i)const;
 	int nbElements()const;
 
-	/*Fonctions*/
 	void translation(const Point p);
-	//void rotation();
-	//void homothetie();
-	friend ostream& operator <<(ostream& flux, const Groupe& g);
+    void rotation();
+    void homothetie();
 
-	~Groupe(){};
+    Groupe* copy() const;
+    QString toXml() const;
+	friend ostream& operator <<(ostream& flux, const Groupe& g);
 };
 #endif
 
