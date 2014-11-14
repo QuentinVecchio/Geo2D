@@ -186,6 +186,7 @@ Makefile: ..\Client_Simple\Client_Simple.pro ..\..\..\..\Qt\5.3\msvc2013_64\mksp
 		..\Client_Simple\Client_Simple.pro \
 		C:/Qt/5.3/msvc2013_64/lib/qtmaind.prl \
 		C:/Qt/5.3/msvc2013_64/lib/Qt5Cored.prl \
+		C:/Qt/5.3/msvc2013_64/lib/Qt5Qml.prl \
 		C:/Qt/5.3/msvc2013_64/lib/Qt5Widgets.prl \
 		C:/Qt/5.3/msvc2013_64/lib/Qt5Xml.prl \
 		C:/Qt/5.3/msvc2013_64/lib/Qt5Network.prl \
@@ -307,6 +308,7 @@ Makefile: ..\Client_Simple\Client_Simple.pro ..\..\..\..\Qt\5.3\msvc2013_64\mksp
 ..\Client_Simple\Client_Simple.pro:
 C:/Qt/5.3/msvc2013_64/lib/qtmaind.prl:
 C:/Qt/5.3/msvc2013_64/lib/Qt5Cored.prl:
+C:/Qt/5.3/msvc2013_64/lib/Qt5Qml.prl:
 C:/Qt/5.3/msvc2013_64/lib/Qt5Widgets.prl:
 C:/Qt/5.3/msvc2013_64/lib/Qt5Xml.prl:
 C:/Qt/5.3/msvc2013_64/lib/Qt5Network.prl:

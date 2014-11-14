@@ -56,7 +56,7 @@ void Groupe::translation(const Point p)
 	}
 }
 
-void Groupe::rotation(Point origine, float angle)
+void Groupe::rotation(const Point origine, float angle)
 {
     for (int i = 0; i < v.size(); i++)
     {

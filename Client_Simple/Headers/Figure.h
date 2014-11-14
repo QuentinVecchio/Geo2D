@@ -9,20 +9,22 @@
 using namespace std;
 
 class Figure{
+
 private:
     Couleur::Couleurs c;
     Point p1;
+
 protected:
-    Figure();
+    Figure(){};
     Figure(const Figure&);
     Figure(const Point p1, const Couleur::Couleurs c);
 
 public:
     ~Figure();
 
-    virtual void translation(Point p)  = 0;
-    virtual void homothetie()  = 0;
-    virtual void rotation(Point origine, float angle) = 0;
+    virtual void translation(const Point p) = 0;
+    virtual void homothetie() = 0;
+    virtual void rotation(const Point origine, float angle) = 0;
 
 	Point getP1() const;
     Couleur::Couleurs getC()const;

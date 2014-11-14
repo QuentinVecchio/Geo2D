@@ -12,9 +12,7 @@ Segment::Segment(const Segment& s) :Figure(s.getP1(),s.getC())
 }
 
 Segment::~Segment()
-{
-
-}
+{}
 
 Point Segment::getP2() const
 {
@@ -28,7 +26,8 @@ void Segment::setP2(const Point p)
 
 void Segment::translation(const Point p)
 {
-    Figure::translation(p);
+    this->getP1().setX(getP1().getX() + p.getX());
+    this->getP1().setY(getP1().getY() + p.getY());
     this->p2.setX(p2.getX() + p.getX());
     this->p2.setY(p2.getY() + p.getY());
 }
@@ -38,7 +37,7 @@ Segment* Segment::copy() const
     return new Segment(*this);
 }
 
-void Segment::rotation(Point origine, float angle)
+void Segment::rotation(const Point origine, float angle)
 {
     //Conversion angle en degré car donné en radian
     angle = 180 * ((angle) / PI);
@@ -51,20 +50,18 @@ void Segment::rotation(Point origine, float angle)
         this->p2.setY(y);
     }
     else if (origine == this->p2){
-        /*
         double x = (this->getP1().getX() - origine.getX()) * cos(angle * PI / 180) - (this->getP1().getY() - origine.getY()) * sin(angle * PI / 180) + 1;
         double y = (this->getP1().getX() - origine.getX()) * sin(angle * PI / 180) + (this->getP1().getY() - origine.getY()) * cos(angle * PI / 180) + 1;
-        cout << x << y << endl;
+        cout << x  << "/" << y << endl;
         this->getP1().setX(350.0);
         this->getP1().setY(350.0);
         cout << this->getP1();
-        */
     }
 }
 
 void Segment::homothetie()
 {
-
+    cout << "homothetie";
 }
 
 QDomElement Segment::toXml(QDomDocument * dom) const
@@ -87,7 +84,7 @@ QDomElement Segment::toXml(QDomDocument * dom) const
 
 void Segment::afficher(ostream& flux) const
 {
-    flux << "Segment[ Point[x = " << this->getP1().getX() << ", y = " << this->getP2().getY() << "] , Point[x = " << this->getP1().getX() << ", y = " << this->getP2().getY() << "]]" << endl;
+    flux << "Segment[ Point[x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "] , Point[x = " << this->getP2().getX() << ", y = " << this->getP2().getY() << "]]" << endl;
 
 }
 
