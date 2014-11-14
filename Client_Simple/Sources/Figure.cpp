@@ -1,10 +1,5 @@
 #include "../Headers/Figure.h"
 
-Figure::Figure()
-{
-
-}
-
 Figure::Figure(const Point p1, const Couleur::Couleurs c)
 {
 	this->p1 = p1;

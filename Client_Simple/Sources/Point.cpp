@@ -1,6 +1,10 @@
 #include "../Headers/Point.h"
 
 using namespace std;
+Point::Point(){
+    this->x = 0;
+    this->y = 0;
+}
 
 Point::Point(const float x, const float y)
 {

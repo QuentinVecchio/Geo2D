@@ -20,8 +20,8 @@ public:
 	Point getP3()const;
     void setP3(const Point p);
 
-	void translation(const Point p);
-    void rotation(Point origine, float angle);
+    void translation(const Point p);
+    void rotation(const Point origine, float angle);
     void homothetie();
 
     Triangle* copy() const;

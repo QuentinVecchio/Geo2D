@@ -17,7 +17,7 @@ public:
 	void setP2(const Point p);
 
 	void translation(const Point p);
-    void rotation(Point origine, float angle);
+    void rotation(const Point origine, float angle);
     void homothetie();
 
     Segment* copy() const;

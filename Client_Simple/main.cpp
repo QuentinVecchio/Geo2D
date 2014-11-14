@@ -19,7 +19,6 @@ int main()
      * Main pour Dylan
      *
     */
-    float pi = 4.0 * atan(1.0);
     Point *p1 = new Point(1, 1);
     Point *p2 = new Point(3,3);
     Segment *s1 = new Segment(*p1, *p2, Couleur::BLACK);

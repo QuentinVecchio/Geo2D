@@ -30,7 +30,8 @@ void Cercle::setRayon(const float r)
 
 void Cercle::translation(const Point p)
 {
-    Figure::translation(p);
+    this->getP1().setX(getP1().getX() + p.getX());
+    this->getP1().setY(getP1().getY() + p.getY());
 }
 
 
@@ -60,12 +61,12 @@ QDomElement Cercle::toXml(QDomDocument * dom) const
     nom.appendChild(couleur);
     return nom;
 }
-/*
+
 Cercle* Cercle::copy() const
 {
     return new Cercle(*this);
 }
-*/
+
 void Cercle::afficher(ostream& flux) const
 {
 	flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << "] " << endl;

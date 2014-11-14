@@ -22,7 +22,7 @@ public:
 	int nbElements()const;
 
 	void translation(const Point p);
-    void rotation(Point origine, float angle);
+    void rotation(const Point origine, float angle);
     void homothetie();
 
     Groupe* copy() const;

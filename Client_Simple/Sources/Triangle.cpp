@@ -35,21 +35,22 @@ void Triangle::setP3(const Point p)
 
 void Triangle::translation(const Point p)
 {
-	Figure::translation(p);
+    this->getP1().setX(getP1().getX() + p.getX());
+    this->getP1().setY(getP1().getY() + p.getY());
 	this->p2.setX(p2.getX() + p.getX());
 	this->p2.setY(p2.getY() + p.getY());
 	this->p3.setX(p3.getX() + p.getX());
 	this->p3.setY(p3.getY() + p.getY());
 }
 
-void Triangle::rotation(Point origine, float angle)
+void Triangle::rotation(const Point origine, float angle)
 {
-
+    cout << "rotation";
 }
 
 void Triangle::homothetie()
 {
-
+    cout << "homothetie";
 }
 
 Triangle* Triangle::copy() const
