@@ -60,12 +60,12 @@ QDomElement Cercle::toXml(QDomDocument * dom) const
     nom.appendChild(couleur);
     return nom;
 }
-
+/*
 Cercle* Cercle::copy() const
 {
     return new Cercle(*this);
 }
-
+*/
 void Cercle::afficher(ostream& flux) const
 {
 	flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << "] " << endl;
