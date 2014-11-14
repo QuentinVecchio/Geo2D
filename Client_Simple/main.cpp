@@ -14,6 +14,19 @@ using namespace std;
 
 int main()
 {
+
+    /**
+     * Main pour Dylan
+     *
+    */
+    float pi = 4.0 * atan(1.0);
+    Point *p1 = new Point(1, 1);
+    Point *p2 = new Point(3,3);
+    Segment *s1 = new Segment(*p1, *p2, Couleur::BLACK);
+    cout << *s1;
+    s1->rotation(*p2, 1.5707963267949);
+    cout << *s1;
+
     /*
     //Début de programme
         cout << "Bienvenue dans le client simple Geo2D" << endl;

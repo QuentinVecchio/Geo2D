@@ -22,7 +22,7 @@ public:
     void homothetie();
 
     QDomElement toXml(QDomDocument *) const;
-    Cercle* copy() const;
+    //Cercle* copy() const;
 	void afficher(ostream& flux) const;
 	friend ostream& operator <<(ostream& flux, const Cercle& c);
 };
