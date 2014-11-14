@@ -1,4 +1,4 @@
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 
 Figure::Figure()
 {
@@ -18,22 +18,6 @@ Figure::Figure(const Figure &f)
 }
 
 Figure::~Figure()
-{
-
-}
-
-void Figure::translation(Point p)
-{
-	p1.setX(p1.getX() + p.getX());
-	p1.setY(p1.getY() + p.getY());
-}
-
-void Figure::homothetie()
-{
-
-}
-
-void Figure::rotation()
 {
 
 }

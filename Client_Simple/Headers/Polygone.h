@@ -2,7 +2,7 @@
 #define POLYGONE_H
 
 #include <vector>
-#include "Headers/Segment.h"
+#include "../Headers/Segment.h"
 #include <QtXml>
 
 class Polygone : public Figure
@@ -22,7 +22,7 @@ public:
 	int nbElements()const;
 
 	void translation(const Point p);
-    void rotation();
+    void rotation(Point origine, float angle);
     void homothetie();
 
     Polygone* copy() const;

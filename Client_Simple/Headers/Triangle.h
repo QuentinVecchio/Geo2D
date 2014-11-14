@@ -1,7 +1,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 #include <QtXml>
 
 class Triangle : public Figure
@@ -21,7 +21,7 @@ public:
     void setP3(const Point p);
 
 	void translation(const Point p);
-    void rotation();
+    void rotation(Point origine, float angle);
     void homothetie();
 
     Triangle* copy() const;

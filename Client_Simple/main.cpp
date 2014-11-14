@@ -14,6 +14,7 @@ using namespace std;
 
 int main()
 {
+    /*
     //Début de programme
         cout << "Bienvenue dans le client simple Geo2D" << endl;
         cout << "Programme développé par Koby Dylan et Vecchio Quentin, élèves de L3" << endl;
@@ -50,4 +51,5 @@ int main()
 
     //Fin de programme
         exit(0);
+    */
 }

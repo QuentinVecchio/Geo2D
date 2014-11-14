@@ -24,11 +24,13 @@ public:
 	void setY(const float y);
 
 	void translation(const Point t);
+    void homothetie();
 
     Point* copy() const;
     QDomElement toXml(QDomDocument *) const;
 	void afficher(ostream& flux) const;
 	friend ostream& operator <<(ostream& flux, const Point& p);
+    friend bool operator == (const Point p1, const Point p2);
 };
 #endif
 

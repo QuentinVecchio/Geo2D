@@ -1,4 +1,4 @@
-#include "Headers/Triangle.h"
+#include "../Headers\Triangle.h"
 
 
 Triangle::Triangle(const Point p1, const Point p2, const Point p3, const Couleur::Couleurs c) :Figure(p1,c)
@@ -42,7 +42,7 @@ void Triangle::translation(const Point p)
 	this->p3.setY(p3.getY() + p.getY());
 }
 
-void Triangle::rotation()
+void Triangle::rotation(Point origine, float angle)
 {
 
 }

@@ -1,4 +1,4 @@
-#include "Headers/Groupe.h"
+#include "../Headers/Groupe.h"
 #include <algorithm>
 
 Groupe::Groupe()
@@ -56,11 +56,11 @@ void Groupe::translation(const Point p)
 	}
 }
 
-void Groupe::rotation()
+void Groupe::rotation(Point origine, float angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->rotation();
+        this->v[i]->rotation(origine, angle);
     }
 }
 

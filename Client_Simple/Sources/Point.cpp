@@ -1,11 +1,6 @@
-#include "Headers/Point.h"
+#include "../Headers/Point.h"
 
 using namespace std;
-
-Point::Point()
-{
-    this->x = this->y = 0;
-}
 
 Point::Point(const float x, const float y)
 {
@@ -45,6 +40,10 @@ void Point::translation(const Point t)
 	this->y += t.getY();
 }
 
+void Point::homothetie(){
+
+}
+
 Point* Point::copy() const
 {
     return new Point(*this);
@@ -79,4 +78,8 @@ ostream& operator <<(ostream& flux, const Point& p)
 {
 	p.afficher(flux);
 	return flux;
+}
+
+bool operator == (const Point p1, const Point p2){
+    return (p1.getX() == p2.getX()) && (p2.getY() == p2.getY());
 }

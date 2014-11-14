@@ -1,4 +1,4 @@
-#include "Headers/Couleur.h"
+#include "../Headers/Couleur.h"
 
 const QString Couleur::strCouleur[] = { "BLACK", "BLUE", "RED", "GREEN", "YELLOW", "CYAN" };
 

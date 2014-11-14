@@ -1,7 +1,7 @@
 #ifndef SEGMENT_H
 #define SEGMENT_H
 
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 #include <QtXml>
 
 class Segment : public Figure
@@ -17,10 +17,10 @@ public:
 	void setP2(const Point p);
 
 	void translation(const Point p);
-    void rotation();
+    void rotation(Point origine, float angle);
     void homothetie();
 
-    virtual Segment* copy() const;
+    Segment* copy() const;
     QDomElement toXml(QDomDocument *) const;
 	void afficher(ostream& flux) const;
 	friend ostream& operator <<(ostream& flux, const Segment& s);
