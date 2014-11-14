@@ -3,7 +3,7 @@
 
 #include <QtXml>
 #include <vector>
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 
 class Groupe
 {
@@ -22,7 +22,7 @@ public:
 	int nbElements()const;
 
 	void translation(const Point p);
-    void rotation();
+    void rotation(Point origine, float angle);
     void homothetie();
 
     Groupe* copy() const;

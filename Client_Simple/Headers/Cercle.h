@@ -3,7 +3,7 @@
 
 #include <QtXml>
 #include "QString"
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 
 class Cercle : public Figure
 {
@@ -17,8 +17,8 @@ public:
 	float getRayon()const;
 	void setRayon(const float r);
 
+    //void rotation(Point origine, float angle){};
 	void translation(const Point p);
-    void rotation();
     void homothetie();
 
     QDomElement toXml(QDomDocument *) const;

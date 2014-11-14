@@ -1,8 +1,8 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
-#include "Headers/Point.h"
-#include "Headers/Couleur.h"
+#include "../Headers/Point.h"
+#include "../Headers/Couleur.h"
 #include <iostream>
 #include <QtXml>
 
@@ -19,9 +19,9 @@ protected:
 public:
     ~Figure();
 
-    virtual void translation(Point p);
-    virtual void homothetie();
-    virtual void rotation();
+    virtual void translation(Point p) = 0;
+    virtual void homothetie()  = 0;
+    virtual void rotation(Point origine, float angle) = 0;
 
 	Point getP1() const;
     Couleur::Couleurs getC()const;

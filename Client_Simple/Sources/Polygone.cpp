@@ -1,4 +1,4 @@
-#include "Headers/Polygone.h"
+#include "../Headers/Polygone.h"
 #include <algorithm>
 
 Polygone::Polygone(const Point &p, const Couleur::Couleurs c) : Figure(p,c)
@@ -61,11 +61,11 @@ void Polygone::translation(const Point p)
 	}
 }
 
-void Polygone::rotation()
+void Polygone::rotation(Point origine, float angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->rotation();
+        this->v[i]->rotation(origine, angle);
     }
 }
 

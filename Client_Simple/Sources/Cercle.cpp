@@ -1,4 +1,4 @@
-#include "Headers/Cercle.h"
+#include "../Headers/Cercle.h"
 
 
 Cercle::Cercle(const Point p, const float r, const Couleur::Couleurs c):Figure(p,c)
@@ -30,17 +30,13 @@ void Cercle::setRayon(const float r)
 
 void Cercle::translation(const Point p)
 {
-	Figure::translation(p);
+    Figure::translation(p);
 }
 
-void Cercle::rotation()
-{
-
-}
 
 void Cercle::homothetie()
 {
-
+    cout << "homothetie";
 }
 
 QDomElement Cercle::toXml(QDomDocument * dom) const
