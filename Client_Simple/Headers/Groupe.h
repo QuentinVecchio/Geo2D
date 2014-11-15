@@ -13,7 +13,7 @@ public:
     Groupe();
     Groupe(const vector<Figure*> groupe);
     Groupe(const Groupe&);
-    ~Groupe();
+    ~Groupe(){}
 
     void add(Figure *);
 
@@ -23,7 +23,7 @@ public:
 
 	void translation(const Point p);
     void rotation(const Point origine, float angle);
-    void homothetie();
+    void homothetie(const Point p, float rapport);
 
     Groupe* copy() const;
     QString toXml() const;

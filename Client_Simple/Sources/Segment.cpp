@@ -10,9 +10,6 @@ Segment::Segment(const Segment& s) :Figure(s.getP1(),s.getC())
     this->p2 = s.getP2();
 }
 
-Segment::~Segment()
-{}
-
 Point Segment::getP2() const
 {
     return this->p2;
@@ -25,8 +22,8 @@ void Segment::setP2(const Point p)
 
 void Segment::translation(const Point p)
 {
-    this->getP1().setX(getP1().getX() + p.getX());
-    this->getP1().setY(getP1().getY() + p.getY());
+    this->getP1().setX(this->getP1().getX() + p.getX());
+    this->getP1().setY(this->getP1().getY() + p.getY());
     this->p2.setX(p2.getX() + p.getX());
     this->p2.setY(p2.getY() + p.getY());
 }
@@ -40,7 +37,7 @@ void Segment::rotation(const Point origine, float angle)
 {
     float PI = 4.0 * atan(1.0);
     //Conversion angle en degré car donné en radian
-    angle = 180 * ((angle) / PI);
+    angle = 180.0 * ((angle) / PI);
 
     // Construction du nouveau point selon le point d'origine donné
     if (origine == this->getP1()){
@@ -52,10 +49,8 @@ void Segment::rotation(const Point origine, float angle)
     else if (origine == this->p2){
         double newx = (this->getP1().getX() - origine.getX()) * cos(angle * PI / 180) - (this->getP1().getY() - origine.getY()) * sin(angle * PI / 180) + 1;
         double newy = (this->getP1().getX() - origine.getX()) * sin(angle * PI / 180) + (this->getP1().getY() - origine.getY()) * cos(angle * PI / 180) + 1;
-        cout << newx  << "/" << newy << endl;
-        this->getP1().setX(350.0);
-        this->getP1().setY(350.0);
-        cout << this->getP1();
+        this->getP1().setX(newx);
+        this->getP1().setY(newy);
     }
     else{
         /*
@@ -67,9 +62,24 @@ void Segment::rotation(const Point origine, float angle)
     }
 }
 
-void Segment::homothetie()
+void Segment::homothetie(const Point centre, float rapport)
 {
-    cout << "homothetie";
+    if(rapport == 1){
+        cout << "Les points restent invariants avec un rapport de 1" << endl;
+    }
+    else if(rapport == -1){
+        cout << "Symétrie centrale" << endl;
+    }
+    else{
+        if(centre == this->getP1()){
+            this->p2.setX(this->getP1().getX() + rapport);
+            this->p2.setY(this->getP1().getY() + rapport);
+        }
+        else if(centre == this->p2){
+            this->getP1().setX(this->p2.getX() + rapport);
+            this->getP1().setY(this->p2.getY() + rapport);
+        }
+    }
 }
 
 QDomElement Segment::toXml(QDomDocument * dom) const

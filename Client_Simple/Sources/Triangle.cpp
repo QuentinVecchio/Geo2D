@@ -45,12 +45,12 @@ void Triangle::translation(const Point p)
 
 void Triangle::rotation(const Point origine, float angle)
 {
-    cout << "rotation";
+    cout << origine << "/" << angle;
 }
 
-void Triangle::homothetie()
+void Triangle::homothetie(const Point p, float rapport)
 {
-    cout << "homothetie";
+    cout << p << "/" << rapport;
 }
 
 Triangle* Triangle::copy() const

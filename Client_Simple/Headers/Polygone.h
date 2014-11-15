@@ -13,7 +13,7 @@ public:
     Polygone(const Point&, const Couleur::Couleurs);
     Polygone(const Point &p, const Couleur::Couleurs, const vector<Segment*> polygone);
     Polygone(const Polygone&);
-    ~Polygone();
+    ~Polygone(){}
 
     void add(Segment *s);
 
@@ -23,7 +23,7 @@ public:
 
 	void translation(const Point p);
     void rotation(const Point origine, float angle);
-    void homothetie();
+    void homothetie(const Point p, float rapport);
 
     Polygone* copy() const;
     QDomElement toXml(QDomDocument *) const;

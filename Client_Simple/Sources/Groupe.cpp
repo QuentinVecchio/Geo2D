@@ -16,11 +16,6 @@ Groupe::Groupe(const Groupe& g)
     this->v = g.getV();
 }
 
-Groupe::~Groupe()
-{
-
-}
-
 void Groupe::add(Figure *f)
 {
     this->v.push_back(f);
@@ -64,11 +59,11 @@ void Groupe::rotation(const Point origine, float angle)
     }
 }
 
-void Groupe::homothetie()
+void Groupe::homothetie(const Point p,  float rapport)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->homothetie();
+        this->v[i]->homothetie(p, rapport);
     }
 }
 
@@ -105,7 +100,7 @@ class AffObjet{
 private:
 	ostream& flux;
 public:
-	AffObjet(ostream& flux) :flux(flux){};
+    AffObjet(ostream& flux) :flux(flux){}
 	void operator () (Figure* f){
 		flux << *f << endl;
 	}

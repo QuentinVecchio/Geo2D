@@ -12,10 +12,6 @@ Figure::Figure(const Figure &f)
     this->p1 = f.getP1();
 }
 
-Figure::~Figure()
-{
-
-}
 
 Point Figure::getP1() const
 {
@@ -27,9 +23,9 @@ Couleur::Couleurs Figure::getC() const
     return this->c;
 }
 
-void Figure::setP1(const Point p1)
+void Figure::setP1(const Point p)
 {
-	this->p1 = p1;
+    this->p1 = p;
 }
 
 void Figure::setC(const Couleur::Couleurs c)

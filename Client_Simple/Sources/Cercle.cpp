@@ -13,11 +13,6 @@ Cercle::Cercle(const Cercle& c)
     this->setC(this->getC());
 }
 
-Cercle::~Cercle()
-{
-
-}
-
 float Cercle::getRayon() const
 {
 	return this->rayon;
@@ -35,9 +30,9 @@ void Cercle::translation(const Point p)
 }
 
 
-void Cercle::homothetie()
+void Cercle::homothetie(const Point centre, float rapport)
 {
-    cout << "homothetie";
+    cout << p << "/" << rapport;
 }
 
 QDomElement Cercle::toXml(QDomDocument * dom) const

@@ -1,10 +1,7 @@
 #include "../Headers/Polygone.h"
 #include <algorithm>
 
-Polygone::Polygone(const Point &p, const Couleur::Couleurs c) : Figure(p,c)
-{
-
-}
+Polygone::Polygone(const Point &p, const Couleur::Couleurs c) : Figure(p,c){}
 
 Polygone::Polygone(const Point &p, const Couleur::Couleurs c ,const vector<Segment*> polygone) : Figure(p,c)
 {
@@ -16,11 +13,6 @@ Polygone::Polygone(const Point &p, const Couleur::Couleurs c ,const vector<Segme
 Polygone::Polygone(const Polygone& p) : Figure(p.getP1(),p.getC())
 {
     this->v = p.getV();
-}
-
-Polygone::~Polygone()
-{
-
 }
 
 void Polygone::add(Segment *s)
@@ -69,11 +61,11 @@ void Polygone::rotation(const Point origine, float angle)
     }
 }
 
-void Polygone::homothetie()
+void Polygone::homothetie(const Point p, float rapport)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->homothetie();
+        this->v[i]->homothetie(p,rapport);
     }
 }
 
@@ -99,7 +91,7 @@ class AffObjet
 private:
 	ostream& flux;
 public:
-	AffObjet(ostream& flux) :flux(flux){};
+    AffObjet(ostream& flux) :flux(flux){}
 	void operator () (Segment* s){
 		flux << *s << endl;
 	}
@@ -109,7 +101,7 @@ public:
 ostream& operator <<(ostream& flux, const Polygone& p)
 {
 	AffObjet aff(flux);
-	for_each(p.v.begin(), p.v.end(), AffObjet(flux));
+    for_each(p.v.begin(), p.v.end() - 1, AffObjet(flux));
 	return flux;
 }
 

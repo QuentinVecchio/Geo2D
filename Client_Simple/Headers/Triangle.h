@@ -12,7 +12,7 @@ private:
 public:
     Triangle(const Point p1, const Point p2, const Point p3, const Couleur::Couleurs c);
     Triangle(const Triangle &);
-    ~Triangle();
+    ~Triangle(){}
 
     Point getP2()const;
     void setP2(const Point p);
@@ -22,7 +22,7 @@ public:
 
     void translation(const Point p);
     void rotation(const Point origine, float angle);
-    void homothetie();
+    void homothetie(const Point p, float rapport);
 
     Triangle* copy() const;
     QDomElement toXml(QDomDocument *) const;
