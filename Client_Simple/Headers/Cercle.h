@@ -12,14 +12,14 @@ private:
 public:
     Cercle(const Point p, const float r, const Couleur::Couleurs c);
     Cercle(const Cercle&);
-    ~Cercle();
+    ~Cercle(){}
 
 	float getRayon()const;
 	void setRayon(const float r);
 
     void rotation(const Point, float){}
     void translation(const Point p);
-    void homothetie();
+    void homothetie(const Point centre,  float rapport);
 
     QDomElement toXml(QDomDocument *) const;
     Cercle* copy() const;

@@ -28,14 +28,14 @@ float Point::getY()const
 	return this->y;
 }
 
-void Point::setX(const float x)
+void Point::setX(const float vx)
 {
-	this->x = x;
+    this->x = vx;
 }
 
-void Point::setY(const float y)
+void Point::setY(const float vy)
 {
-	this->y = y;
+    this->y = vy;
 }
 
 void Point::rotation(const Point origine, float angle)
@@ -54,9 +54,6 @@ void Point::translation(const Point t)
 	this->y += t.getY();
 }
 
-void Point::homothetie(){
-
-}
 
 Point* Point::copy() const
 {

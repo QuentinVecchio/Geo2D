@@ -19,17 +19,24 @@ int main()
      * Main pour Dylan
      *
     */
-    Point *p1 = new Point(1,1);
-    Point *p2 = new Point(3,3);
-    Point *p3 = new Point(5,5);
-    Segment *s1 = new Segment(*p1, *p2, Couleur::BLACK);
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Point *p3 = new Point(3.0,1.0);
+    Segment *s1 = new Segment(*p1, *p2, Couleur::CYAN);
     Cercle *c = new Cercle(*p1, 50.0, Couleur::BLACK);
     Triangle *t = new Triangle(*p1, *p2, *p3, Couleur::CYAN);
-    cout << *c;
-    cout << *t;
-    cout << *s1;
-    s1->rotation(*p2, 1.5707963267949);
-    cout << *s1;
+    Polygone *p = new Polygone(*p1, Couleur::BLUE);
+    p->add(s1);
+    cout << *p;
+
+    //cout << *c;
+    //cout << *t;
+    //cout << *s1;
+    //s1->homothetie(*p1, 2);
+    //cout << *s1;
+    //s1->rotation(*p2, 1.5707963267949);
+    //c->translation(*p3);
+    //cout << *c;
 
     /*
     //Début de programme

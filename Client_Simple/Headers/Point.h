@@ -9,23 +9,22 @@ using namespace std;
 class Point 
 {
 private:
-	float x;
-	float y;
-
+    float x;
+    float y;
 public:
     Point();
-	Point(const float x, const float y);
+    Point(const float x, const float y);
     Point(const Point& );
+    ~Point(){}
 
-	float getX()const;
-	float getY()const;
+    float getX()const;
+    float getY()const;
 
-	void setX(const float x);
-	void setY(const float y);
+    void setX(const float vx);
+    void setY(const float vy);
 
     void rotation(const Point origine, float angle);
 	void translation(const Point t);
-    void homothetie();
 
     Point* copy() const;
     QDomElement toXml(QDomDocument *) const;
