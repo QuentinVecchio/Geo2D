@@ -15,7 +15,7 @@ private:
     Point p1;
 
 protected:
-    Figure(){};
+    Figure(){}
     Figure(const Figure&);
     Figure(const Point p1, const Couleur::Couleurs c);
 
