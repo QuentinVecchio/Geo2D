@@ -6,9 +6,9 @@ Groupe::Groupe()
 
 }
 
-Groupe::Groupe(const vector<Figure*> polygone)
+Groupe::Groupe(const vector<Figure*> groupe)
 {
-	this->v = polygone;
+    this->v = groupe;
 }
 
 Groupe::Groupe(const Groupe& g)

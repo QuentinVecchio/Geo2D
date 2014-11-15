@@ -11,7 +11,7 @@ private:
     vector<Figure*> v;
 public:
     Groupe();
-    Groupe(const vector<Figure*> polygone);
+    Groupe(const vector<Figure*> groupe);
     Groupe(const Groupe&);
     ~Groupe();
 
