@@ -23,6 +23,7 @@ public:
 	void setX(const float x);
 	void setY(const float y);
 
+    void rotation(const Point origine, float angle);
 	void translation(const Point t);
     void homothetie();
 

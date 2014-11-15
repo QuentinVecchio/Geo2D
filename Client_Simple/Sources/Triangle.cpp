@@ -81,7 +81,7 @@ QDomElement Triangle::toXml(QDomDocument * dom) const
 
 void Triangle::afficher(ostream& flux) const
 {
-	flux << "Triangle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], Point[ x = " << this->getP2().getX() << ", y = " << this->getP2().getY() << "], Point[ x = " << this->getP3().getX() << ", y = " << this->getP3().getY() << "]]" << endl;
+    flux << "Triangle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], Point[ x = " << this->getP2().getX() << ", y = " << this->getP2().getY() << "], Point[ x = " << this->getP3().getX() << ", y = " << this->getP3().getY() << "]" << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "]" << endl;
 }
 
 ostream& operator <<(ostream& flux, const Triangle& t)

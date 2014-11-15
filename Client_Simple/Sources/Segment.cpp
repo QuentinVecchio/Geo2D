@@ -1,5 +1,4 @@
 #include "../Headers/Segment.h"
-float PI = 4.0 * atan(1.0);
 
 Segment::Segment(const Point p1, const Point p2, const Couleur::Couleurs c):Figure(p1,c)
 {
@@ -39,23 +38,32 @@ Segment* Segment::copy() const
 
 void Segment::rotation(const Point origine, float angle)
 {
+    float PI = 4.0 * atan(1.0);
     //Conversion angle en degré car donné en radian
     angle = 180 * ((angle) / PI);
 
     // Construction du nouveau point selon le point d'origine donné
     if (origine == this->getP1()){
+        double newx = (this->p2.getX() - origine.getX()) * cos(angle * PI / 180) - (this->p2.getY() - origine.getY()) * sin(angle * PI / 180) + 1;
+        double newy = (this->p2.getX() - origine.getX()) * sin(angle * PI / 180) + (this->p2.getY() - origine.getY()) * cos(angle * PI / 180) + 1;
+        this->p2.setX(newx);
+        this->p2.setY(newy);
+    }
+    else if (origine == this->p2){
+        double newx = (this->getP1().getX() - origine.getX()) * cos(angle * PI / 180) - (this->getP1().getY() - origine.getY()) * sin(angle * PI / 180) + 1;
+        double newy = (this->getP1().getX() - origine.getX()) * sin(angle * PI / 180) + (this->getP1().getY() - origine.getY()) * cos(angle * PI / 180) + 1;
+        cout << newx  << "/" << newy << endl;
+        this->getP1().setX(350.0);
+        this->getP1().setY(350.0);
+        cout << this->getP1();
+    }
+    else{
+        /*
         double x = (this->p2.getX() - origine.getX()) * cos(angle * PI / 180) - (this->p2.getY() - origine.getY()) * sin(angle * PI / 180) + 1;
         double y = (this->p2.getX() - origine.getX()) * sin(angle * PI / 180) + (this->p2.getY() - origine.getY()) * cos(angle * PI / 180) + 1;
         this->p2.setX(x);
         this->p2.setY(y);
-    }
-    else if (origine == this->p2){
-        double x = (this->getP1().getX() - origine.getX()) * cos(angle * PI / 180) - (this->getP1().getY() - origine.getY()) * sin(angle * PI / 180) + 1;
-        double y = (this->getP1().getX() - origine.getX()) * sin(angle * PI / 180) + (this->getP1().getY() - origine.getY()) * cos(angle * PI / 180) + 1;
-        cout << x  << "/" << y << endl;
-        this->getP1().setX(350.0);
-        this->getP1().setY(350.0);
-        cout << this->getP1();
+        */
     }
 }
 
@@ -84,7 +92,7 @@ QDomElement Segment::toXml(QDomDocument * dom) const
 
 void Segment::afficher(ostream& flux) const
 {
-    flux << "Segment[ Point[x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "] , Point[x = " << this->getP2().getX() << ", y = " << this->getP2().getY() << "]]" << endl;
+    flux << "Segment[ Point[x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "] , Point[x = " << this->getP2().getX() << ", y = " << this->getP2().getY() << "]" << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "]" << endl;
 
 }
 

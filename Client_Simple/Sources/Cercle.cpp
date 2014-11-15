@@ -69,7 +69,7 @@ Cercle* Cercle::copy() const
 
 void Cercle::afficher(ostream& flux) const
 {
-	flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << "] " << endl;
+    flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "] " << endl;
 }
 
 ostream& operator <<(ostream& flux, const Cercle& c)

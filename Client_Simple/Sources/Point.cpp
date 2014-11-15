@@ -38,6 +38,16 @@ void Point::setY(const float y)
 	this->y = y;
 }
 
+void Point::rotation(const Point origine, float angle)
+{
+    float PI = 4.0 * atan(1.0);
+    double newx = (x - origine.getX()) * cos(angle * PI / 180) - (y - origine.getY()) * sin(angle * PI / 180) + 1;
+    double newy = (x - origine.getX()) * sin(angle * PI / 180) + (y - origine.getY()) * cos(angle * PI / 180) + 1;
+    this->x = newx;
+    this->y = newy;
+
+}
+
 void Point::translation(const Point t)
 {
 	this->x += t.getX();
