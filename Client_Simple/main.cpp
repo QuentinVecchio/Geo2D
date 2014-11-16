@@ -13,23 +13,27 @@
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
 
-    /**
-     * Main pour Dylan
-     *
+    // Main pour Dylan
 
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Point *p3 = new Point(3.0,1.0);
-    //cout << *p3;
+    //cout << *p1 << *p2 << *p3;
     Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
-    cout << *s1;
+    //cout << *s1;
     Cercle *c = new Cercle(p1, 1.0, Couleur::BLACK);
-
-    //Polygone *p = new Polygone(p3, Couleur::BLUE);
+    Polygone *p = new Polygone(p3, Couleur::BLUE);
+    Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
+    Groupe *g = new Groupe(Couleur::GREEN);
     //p->add(s1);
+    //g->add(s1);
+    //g->add(p);
+    //g->add(c);
+    //g->add(t);
+    //cout << *g;
     //cout << *p;
     //cout << s1->getLongueur() << endl;
     //cout << c->getAire() << endl;
@@ -39,19 +43,20 @@ int main(int argc, char *argv[])
     //cout << *t;
     //s1->homothetie(*p2, 2);
     //cout << *s1;
-    //s1->rotation(*p2, 1.5707963267949);
-    s1->translation(p3);
-    cout << *s1;
-    c->homothetie(p1, 2);
-    cout << *c;
-    cout << *p1;
-    //cout << "lol";
-    //Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
+    //s1->rotation(p1, 1.5707963267949);
+    //s1->translation(p3);
+    //cout << *s1;
+    //c->homothetie(p1, 2);
+    //cout << *c;
+    //cout << *p1;
+    //p1->translation(*p2);
+    //cout << *p1;
     //cout << *t;
+    //cout << t->getAire();
 
 
-    Main pour Quentin
-    */
+    //Main pour Quentin
+    /*
     QApplication a(argc, argv);
     //Début de programme
         cout << "Bienvenue dans le client simple Geo2D" << endl;
@@ -89,4 +94,5 @@ int main(int argc, char *argv[])
 
    //Fin de programme
        return a.exec();
+      */
 }

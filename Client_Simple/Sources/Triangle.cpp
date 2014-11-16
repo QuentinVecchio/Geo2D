@@ -1,23 +1,24 @@
 #include "../Headers/Triangle.h"
 #include "../Headers/Segment.h"
+
 Triangle::Triangle(const Point *p1, const Point *p2, const Point *p3, const Couleur::Couleurs c) :Figure(p1,c)
 {
-    p2 = p2->copy();
-    p3 = p3->copy();
+    this->p2 = p2->copy();
+    this->p3 = p3->copy();
 }
 
-Triangle::Triangle(const Triangle &t) :Figure(t.getP1(),t.getC())
+Triangle::Triangle(const Triangle &t) :Figure(t.getP1()->copy(),t.getC())
 {
     this->p2 = t.getP2();
     this->p3 = t.getP3();
 }
 
-Point *Triangle::getP2()const
+Point *Triangle::getP2() const
 {
     return this->p2;
 }
 
-Point *Triangle::getP3()const
+Point *Triangle::getP3() const
 {
     return this->p3;
 }

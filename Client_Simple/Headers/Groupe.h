@@ -8,10 +8,11 @@
 class Groupe
 {
 private:
+    Couleur::Couleurs c;
     vector<Figure*> v;
 public:
-    Groupe();
-    Groupe(const vector<Figure*> groupe);
+    Groupe(const Couleur::Couleurs c);
+    Groupe(const vector<Figure*> groupe, const Couleur::Couleurs c);
     Groupe(const Groupe&);
     ~Groupe();
 

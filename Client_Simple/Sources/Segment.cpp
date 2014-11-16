@@ -1,11 +1,11 @@
 #include "../Headers/Segment.h"
 #include <math.h>
-Segment::Segment(const Point *p1, const Point *p2, const Couleur::Couleurs c):Figure(p1,c)
+Segment::Segment(const Point *p1, const Point *p2, const Couleur::Couleurs c):Figure(p1->copy(),c)
 {
     this->p2 = p2->copy();
 }
 
-Segment::Segment(const Segment &s) :Figure(s.getP1(),s.getC())
+Segment::Segment(const Segment &s) :Figure(s.getP1()->copy(),s.getC())
 {
     this->p2 = s.getP2();
 }
@@ -26,6 +26,7 @@ float Segment::getLongueur()const{
 
 void Segment::translation(const Point *p)
 {
+    cout << this->getP1();
     this->setP1(Point(this->getP1()->getX() + p->getX(), this->getP1()->getY() + p->getY()).copy());
     this->p2->setX(p2->getX() + p->getX());
     this->p2->setY(p2->getY() + p->getY());
@@ -41,9 +42,8 @@ void Segment::rotation(const Point *origine, float angle)
     float PI = 4.0 * atan(1.0);
     //Conversion angle en degré car donné en radian
     angle = 180 * ((angle) / PI);
-
     // Construction du nouveau point selon le point d'origine donné
-    if (origine == this->getP1()){
+    if (origine == *this->getP1()){
         double newx = (this->p2->getX() - origine->getX()) * cos(angle * PI / 180) - (this->p2->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
         double newy = (this->p2->getX() - origine->getX()) * sin(angle * PI / 180) + (this->p2->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
         this->p2->setX(newx);

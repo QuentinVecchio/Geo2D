@@ -1,9 +1,9 @@
 #include "../Headers/Polygone.h"
 #include <algorithm>
 
-Polygone::Polygone(const Point *p, const Couleur::Couleurs c) : Figure(NULL,c){}
+Polygone::Polygone(const Point *p, const Couleur::Couleurs c) : Figure(p,c){}
 
-Polygone::Polygone(const Point *p, const Couleur::Couleurs c ,const vector<Segment*> polygone) : Figure(NULL,c)
+Polygone::Polygone(const Point *p, const Couleur::Couleurs c ,const vector<Segment*> polygone) : Figure(p,c)
 {
     Segment *s = new Segment(polygone[0]->getP1(), polygone[0]->getP2(), c);
     this->v = polygone;
@@ -22,7 +22,9 @@ void Polygone::add(Segment *s)
         Segment *s1 = new Segment(s->getP1(),s->getP2(),this->getC());
         this->v.push_back(s1);
     }
-    this->v.push_back(s);
+    else{
+        this->v.push_back(s);
+    }
 }
 
 vector<Segment*> Polygone::getV() const
@@ -93,7 +95,7 @@ private:
 public:
     AffObjet(ostream& flux) :flux(flux){}
 	void operator () (Segment* s){
-		flux << *s << endl;
+        flux << *s << endl;
 	}
 
 };
@@ -101,7 +103,7 @@ public:
 ostream& operator <<(ostream& flux, const Polygone& p)
 {
 	AffObjet aff(flux);
-    for_each(p.v.begin(), p.v.end() - 1, AffObjet(flux));
+    for_each(p.v.begin(), p.v.end(), AffObjet(flux));
 	return flux;
 }
 
