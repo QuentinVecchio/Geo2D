@@ -17,6 +17,8 @@ public:
 	float getRayon()const;
 	void setRayon(const float r);
 
+    float getAire()const;
+
     void rotation(const Point, float){}
     void translation(const Point p);
     void homothetie(const Point centre,  float rapport);

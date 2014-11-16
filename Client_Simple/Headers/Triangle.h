@@ -20,6 +20,8 @@ public:
 	Point getP3()const;
     void setP3(const Point p);
 
+    float getAire()const;
+
     void translation(const Point p);
     void rotation(const Point origine, float angle);
     void homothetie(const Point p, float rapport);
