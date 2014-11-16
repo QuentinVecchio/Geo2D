@@ -1,7 +1,7 @@
 #include "../Headers/Cercle.h"
 
 
-Cercle::Cercle(const Point p, const float r, const Couleur::Couleurs c):Figure(p,c)
+Cercle::Cercle(const Point *p, const float r, const Couleur::Couleurs c):Figure(p,c)
 {
 	this->rayon = r;
 }
@@ -30,16 +30,20 @@ float Cercle::getAire()const{
     return aire;
 }
 
-void Cercle::translation(const Point p)
+void Cercle::translation(const Point *p)
 {
-    this->getP1().setX(getP1().getX() + p.getX());
-    this->getP1().setY(getP1().getY() + p.getY());
+    this->setP1(Point(this->getP1()->getX() + p->getX(), this->getP1()->getY() + p->getY()).copy());
 }
 
 
-void Cercle::homothetie(const Point centre, float rapport)
+void Cercle::homothetie(const Point *centre, float rapport)
 {
-    cout << centre << "/" << rapport;
+    if(rapport == 1){
+        cout << "Le cercle reste invariant avec un rapport de 1" << endl;
+    }
+    else{
+        this->setRayon(this->getRayon() * rapport);
+    }
 }
 
 QDomElement Cercle::toXml(QDomDocument * dom) const
@@ -54,7 +58,7 @@ QDomElement Cercle::toXml(QDomDocument * dom) const
     rayon.appendChild(r);
     nom.appendChild(rayon);
     //Création de la balise point
-    QDomElement point = this->getP1().toXml(dom);
+    QDomElement point = this->getP1()->toXml(dom);
     nom.appendChild(point);
     //Création de la balise couleur
     QDomElement couleur = dom->createElement("couleur");
@@ -71,11 +75,15 @@ Cercle* Cercle::copy() const
 
 void Cercle::afficher(ostream& flux) const
 {
-    flux << "Cercle[ Point[ x = " << this->getP1().getX() << ", y = " << this->getP1().getY() << "], " << " Rayon = " << this->rayon << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "] " << endl;
+    flux << "Cercle[ Point[ x = " << this->getP1()->getX() << ", y = " << this->getP1()->getY() << "], " << " Rayon = " << this->rayon << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "] " << endl;
 }
 
 ostream& operator <<(ostream& flux, const Cercle& c)
 {
 	c.afficher(flux);
 	return flux;
+}
+
+Cercle::~Cercle(){
+    delete this->getP1();
 }

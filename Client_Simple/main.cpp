@@ -22,22 +22,31 @@ int main()
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Point *p3 = new Point(3.0,1.0);
-    Segment *s1 = new Segment(*p1, *p2, Couleur::CYAN);
-    Cercle *c = new Cercle(*p1, 50.0, Couleur::BLACK);
-    Triangle *t = new Triangle(*p1, *p2, *p3, Couleur::CYAN);
-    Polygone *p = new Polygone(*p1, Couleur::BLUE);
+    //cout << *p3;
+    Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
+    cout << *s1;
+    Cercle *c = new Cercle(p1, 1.0, Couleur::BLACK);
+
+    //Polygone *p = new Polygone(p3, Couleur::BLUE);
     //p->add(s1);
     //cout << *p;
-    cout << s1->getLongueur() << endl;
-    cout << c->getAire() << endl;
+    //cout << s1->getLongueur() << endl;
+    //cout << c->getAire() << endl;
+    //p->translation(p3);
+    //cout << *p;
     //cout << *c;
     //cout << *t;
-    //cout << *s1;
-    //s1->homothetie(*p1, 2);
+    //s1->homothetie(*p2, 2);
     //cout << *s1;
     //s1->rotation(*p2, 1.5707963267949);
-    //c->translation(*p3);
-    //cout << *c;
+    s1->translation(p3);
+    cout << *s1;
+    c->homothetie(p1, 2);
+    cout << *c;
+    cout << *p1;
+    //cout << "lol";
+    //Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
+    //cout << *t;
 
     /*
     //Début de programme

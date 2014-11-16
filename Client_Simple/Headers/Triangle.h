@@ -7,24 +7,24 @@
 class Triangle : public Figure
 {
 private:
-	Point p2;
-	Point p3;
+    Point *p2;
+    Point *p3;
 public:
-    Triangle(const Point p1, const Point p2, const Point p3, const Couleur::Couleurs c);
+    Triangle(const Point *p1, const Point *p2, const Point *p3, const Couleur::Couleurs c);
     Triangle(const Triangle &);
-    ~Triangle(){}
+    ~Triangle();
 
-    Point getP2()const;
-    void setP2(const Point p);
+    Point *getP2()const;
+    void setP2(const Point *p);
 
-	Point getP3()const;
-    void setP3(const Point p);
+    Point *getP3()const;
+    void setP3(const Point *p);
 
     float getAire()const;
 
-    void translation(const Point p);
-    void rotation(const Point origine, float angle);
-    void homothetie(const Point p, float rapport);
+    void translation(const Point *p);
+    void rotation(const Point *origine, float angle);
+    void homothetie(const Point *centre, float rapport);
 
     Triangle* copy() const;
     QDomElement toXml(QDomDocument *) const;

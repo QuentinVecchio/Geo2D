@@ -1,18 +1,18 @@
 #include "../Headers/Point.h"
 
 using namespace std;
-Point::Point(){
+*Point::Point(){
     this->x = 0;
     this->y = 0;
 }
 
-Point::Point(const float x, const float y)
+*Point::Point(const float x, const float y)
 {
 	this->x = x;
 	this->y = y;
 }
 
-Point::Point(const Point& p)
+*Point::Point(const Point &p)
 {
     this->x = p.getX();
     this->y = p.getY();
@@ -25,7 +25,7 @@ float Point::getX()const
 
 float Point::getY()const
 {
-	return this->y;
+    return this->y;
 }
 
 void Point::setX(const float vx)
@@ -91,6 +91,6 @@ ostream& operator <<(ostream& flux, const Point& p)
 	return flux;
 }
 
-bool operator == (const Point p1, const Point p2){
-    return (p1.getX() == p2.getX()) && (p2.getY() == p2.getY());
+bool operator == (const Point *p1, const Point p2){
+    return (p1->getX() == p2.getX()) && (p1->getY() == p2.getY());
 }
