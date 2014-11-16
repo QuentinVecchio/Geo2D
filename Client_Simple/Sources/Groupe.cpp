@@ -1,10 +1,13 @@
 #include "../Headers/Groupe.h"
 #include <algorithm>
 
-Groupe::Groupe(){}
+Groupe::Groupe(const Couleur::Couleurs c){
+    this->c = c;
+}
 
-Groupe::Groupe(const vector<Figure*> groupe)
+Groupe::Groupe(const vector<Figure*> groupe, const Couleur::Couleurs c)
 {
+    this->c = c;
     this->v = groupe;
 }
 
@@ -15,6 +18,8 @@ Groupe::Groupe(const Groupe& g)
 
 void Groupe::add(Figure *f)
 {
+    // on applique la couleur du groupe à toutes ses pièces
+    f->setC(this->c);
     this->v.push_back(f);
 }
 
