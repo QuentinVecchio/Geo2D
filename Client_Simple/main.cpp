@@ -1,5 +1,6 @@
 #include "network.h"
 #include <string>
+#include <QApplication>
 #include <iostream>
 #include "Headers/Cercle.h"
 #include "Headers/Couleur.h"
@@ -12,13 +13,13 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
 
     /**
      * Main pour Dylan
      *
-    */
+
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Point *p3 = new Point(3.0,1.0);
@@ -48,7 +49,10 @@ int main()
     //Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
     //cout << *t;
 
-    /*
+
+    Main pour Quentin
+    */
+    QApplication a(argc, argv);
     //Début de programme
         cout << "Bienvenue dans le client simple Geo2D" << endl;
         cout << "Programme développé par Koby Dylan et Vecchio Quentin, élèves de L3" << endl;
@@ -58,16 +62,16 @@ int main()
 
     //Création des figures
         Groupe *groupe = new Groupe();
-        Cercle *c = new Cercle(Point(2,3),2.5,Couleur::BLACK);
-        Segment *s = new Segment(Point(1,1),Point(2,2),Couleur::BLACK);
-        Triangle *t = new Triangle(Point(1,1),Point(2,2),Point(3,3),Couleur::BLACK);
+        Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
+        Segment *s = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
+        Triangle *t = new Triangle(new Point(1,1),new Point(2,2),new Point(3,3),Couleur::BLACK);
         //Création d'un polygone
-        Segment *s1 = new Segment(Point(1,1),Point(2,2),Couleur::BLACK);
-        Segment *s2 = new Segment(Point(1,1),Point(2,2),Couleur::BLACK);
+        Segment *s1 = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
+        Segment *s2 = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
         vector<Segment *> vec;
         vec.push_back(s1);
         vec.push_back(s2);
-        Polygone *p = new Polygone(Point(1,1),Couleur::BLACK,vec);
+        Polygone *p = new Polygone(new Point(1,1),Couleur::BLACK,vec);
 
     //Ajout dans un objets groupe
         groupe->add(c);
@@ -83,7 +87,6 @@ int main()
     //Envoie des données aux serveurs
        network->send(xml);
 
-    //Fin de programme
-        exit(0);
-    */
+   //Fin de programme
+       return a.exec();
 }

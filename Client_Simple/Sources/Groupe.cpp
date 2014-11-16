@@ -98,8 +98,12 @@ QString Groupe::toXml() const
     {
         write_elem.appendChild(this->v[i]->toXml(dom));
     }
-
-    return dom->toString();
+    QString s = dom->toString();
+    s.replace(" ","");
+    s.replace("\t","");
+    s.replace("\r","");
+    s.replace("\n","");
+    return s;
 }
 
 class AffObjet{

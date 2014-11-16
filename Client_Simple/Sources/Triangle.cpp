@@ -1,4 +1,4 @@
-#include "../Headers\Triangle.h"
+#include "../Headers/Triangle.h"
 #include "../Headers/Segment.h"
 Triangle::Triangle(const Point *p1, const Point *p2, const Point *p3, const Couleur::Couleurs c) :Figure(p1,c)
 {
