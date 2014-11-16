@@ -15,6 +15,7 @@ public:
 
 	Point getP2()const;
 	void setP2(const Point p);
+    float getLongueur()const;
 
 	void translation(const Point p);
     void rotation(const Point origine, float angle);

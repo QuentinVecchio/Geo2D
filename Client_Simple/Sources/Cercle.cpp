@@ -23,6 +23,13 @@ void Cercle::setRayon(const float r)
 	this->rayon = r;
 }
 
+float Cercle::getAire()const{
+    float aire;
+    float PI = 4.0 * atan(1.0);
+    aire = pow(this->getRayon(), 2) * PI;
+    return aire;
+}
+
 void Cercle::translation(const Point p)
 {
     this->getP1().setX(getP1().getX() + p.getX());
@@ -32,7 +39,7 @@ void Cercle::translation(const Point p)
 
 void Cercle::homothetie(const Point centre, float rapport)
 {
-    cout << p << "/" << rapport;
+    cout << centre << "/" << rapport;
 }
 
 QDomElement Cercle::toXml(QDomDocument * dom) const

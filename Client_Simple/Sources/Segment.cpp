@@ -1,5 +1,5 @@
 #include "../Headers/Segment.h"
-
+#include <math.h>
 Segment::Segment(const Point p1, const Point p2, const Couleur::Couleurs c):Figure(p1,c)
 {
     this->p2 = p2;
@@ -18,6 +18,10 @@ Point Segment::getP2() const
 void Segment::setP2(const Point p)
 {
     this->p2 = p;
+}
+
+float Segment::getLongueur()const{
+    return sqrt(pow(this->p2.getX() - this->getP1().getX(), 2) + pow(this->p2.getX() - this->getP1().getX() , 2));
 }
 
 void Segment::translation(const Point p)

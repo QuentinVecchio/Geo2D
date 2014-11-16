@@ -26,9 +26,10 @@ int main()
     Cercle *c = new Cercle(*p1, 50.0, Couleur::BLACK);
     Triangle *t = new Triangle(*p1, *p2, *p3, Couleur::CYAN);
     Polygone *p = new Polygone(*p1, Couleur::BLUE);
-    p->add(s1);
-    cout << *p;
-
+    //p->add(s1);
+    //cout << *p;
+    cout << s1->getLongueur() << endl;
+    cout << c->getAire() << endl;
     //cout << *c;
     //cout << *t;
     //cout << *s1;

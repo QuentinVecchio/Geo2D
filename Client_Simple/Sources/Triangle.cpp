@@ -1,5 +1,5 @@
 #include "../Headers\Triangle.h"
-
+#include "../Headers/Segment.h"
 
 Triangle::Triangle(const Point p1, const Point p2, const Point p3, const Couleur::Couleurs c) :Figure(p1,c)
 {
@@ -31,6 +31,13 @@ void Triangle::setP2(const Point p)
 void Triangle::setP3(const Point p)
 {
     this->p3 = p;
+}
+
+float Triangle::getAire()const{
+    float aire;
+    Segment *base = new Segment(this->getP1(), this->p2, this->getC());
+
+    return aire;
 }
 
 void Triangle::translation(const Point p)
