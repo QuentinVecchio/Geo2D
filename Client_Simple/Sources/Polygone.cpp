@@ -1,16 +1,16 @@
 #include "../Headers/Polygone.h"
 #include <algorithm>
 
-Polygone::Polygone(const Point &p, const Couleur::Couleurs c) : Figure(p,c){}
+Polygone::Polygone(const Point *p, const Couleur::Couleurs c) : Figure(NULL,c){}
 
-Polygone::Polygone(const Point &p, const Couleur::Couleurs c ,const vector<Segment*> polygone) : Figure(p,c)
+Polygone::Polygone(const Point *p, const Couleur::Couleurs c ,const vector<Segment*> polygone) : Figure(NULL,c)
 {
-    Segment *s = new Segment(p,polygone[0]->getP1(), c);
+    Segment *s = new Segment(polygone[0]->getP1(), polygone[0]->getP2(), c);
     this->v = polygone;
     this->v.insert(this->v.begin(),s);
 }
 
-Polygone::Polygone(const Polygone& p) : Figure(p.getP1(),p.getC())
+Polygone::Polygone(const Polygone &p) : Figure(p.getP1(),p.getC())
 {
     this->v = p.getV();
 }
@@ -19,7 +19,7 @@ void Polygone::add(Segment *s)
 {
     if(this->v.size() == 0)
     {
-        Segment *s1 = new Segment(this->getP1(),s->getP1(),this->getC());
+        Segment *s1 = new Segment(s->getP1(),s->getP2(),this->getC());
         this->v.push_back(s1);
     }
     this->v.push_back(s);
@@ -45,15 +45,15 @@ int Polygone::nbElements() const
 	return this->v.size();
 }
 
-void Polygone::translation(const Point p)
+void Polygone::translation(const Point *p)
 {
 	for (int i = 0; i < v.size(); i++)
 	{
-		this->v[i]->translation(p);
+        this->v[i]->translation(p);
 	}
 }
 
-void Polygone::rotation(const Point origine, float angle)
+void Polygone::rotation(const Point *origine, float angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
@@ -61,11 +61,11 @@ void Polygone::rotation(const Point origine, float angle)
     }
 }
 
-void Polygone::homothetie(const Point p, float rapport)
+void Polygone::homothetie(const Point *centre, float rapport)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->homothetie(p,rapport);
+        this->v[i]->homothetie(centre,rapport);
     }
 }
 
@@ -105,3 +105,9 @@ ostream& operator <<(ostream& flux, const Polygone& p)
 	return flux;
 }
 
+Polygone::~Polygone(){
+    int i;
+    for (i = 0; i < v.size(); i++) {
+        delete this->v[i];
+    }
+}

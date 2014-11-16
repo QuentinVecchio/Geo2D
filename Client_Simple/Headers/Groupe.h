@@ -13,17 +13,18 @@ public:
     Groupe();
     Groupe(const vector<Figure*> groupe);
     Groupe(const Groupe&);
-    ~Groupe(){}
+    ~Groupe();
 
     void add(Figure *);
 
     vector<Figure*> getV() const;
     Figure* getFigure(const int i)const;
 	int nbElements()const;
+    float getAire()const;
 
-	void translation(const Point p);
-    void rotation(const Point origine, float angle);
-    void homothetie(const Point p, float rapport);
+    void translation(const Point *p);
+    void rotation(const Point *origine, float angle);
+    void homothetie(const Point *centre, float rapport);
 
     Groupe* copy() const;
     QString toXml() const;

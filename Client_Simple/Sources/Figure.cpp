@@ -1,8 +1,8 @@
 #include "../Headers/Figure.h"
 
-Figure::Figure(const Point p1, const Couleur::Couleurs c)
+Figure::Figure(const Point *p1, const Couleur::Couleurs c)
 {
-	this->p1 = p1;
+    this->p1 = p1->copy();
 	this->c = c;
 }
 
@@ -13,9 +13,9 @@ Figure::Figure(const Figure &f)
 }
 
 
-Point Figure::getP1() const
+Point *Figure::getP1() const
 {
-	return this->p1;
+    return this->p1;
 }
 
 Couleur::Couleurs Figure::getC() const
@@ -23,9 +23,9 @@ Couleur::Couleurs Figure::getC() const
     return this->c;
 }
 
-void Figure::setP1(const Point p)
+void Figure::setP1(const Point *p)
 {
-    this->p1 = p;
+    this->p1 = p->copy();
 }
 
 void Figure::setC(const Couleur::Couleurs c)

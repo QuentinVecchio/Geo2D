@@ -1,10 +1,7 @@
 #include "../Headers/Groupe.h"
 #include <algorithm>
 
-Groupe::Groupe()
-{
-
-}
+Groupe::Groupe(){}
 
 Groupe::Groupe(const vector<Figure*> groupe)
 {
@@ -19,6 +16,15 @@ Groupe::Groupe(const Groupe& g)
 void Groupe::add(Figure *f)
 {
     this->v.push_back(f);
+}
+
+float Groupe::getAire()const{
+    float res = 0.0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        res += this->v[i]->getAire();
+    }
+    return res;
 }
 
 vector<Figure*> Groupe::getV() const
@@ -43,7 +49,7 @@ int Groupe::nbElements()const
 	return this->v.size();
 }
 
-void Groupe::translation(const Point p)
+void Groupe::translation(const Point *p)
 {
 	for (int i = 0; i < v.size(); i++)
 	{
@@ -51,7 +57,7 @@ void Groupe::translation(const Point p)
 	}
 }
 
-void Groupe::rotation(const Point origine, float angle)
+void Groupe::rotation(const Point *origine, float angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
@@ -59,11 +65,11 @@ void Groupe::rotation(const Point origine, float angle)
     }
 }
 
-void Groupe::homothetie(const Point p,  float rapport)
+void Groupe::homothetie(const Point *centre,  float rapport)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        this->v[i]->homothetie(p, rapport);
+        this->v[i]->homothetie(centre, rapport);
     }
 }
 
@@ -111,5 +117,12 @@ ostream& operator <<(ostream& flux, const Groupe& g){
 	AffObjet aff(flux);
 	for_each(g.v.begin(), g.v.end(), AffObjet(flux));
 	return flux;
+}
+
+Groupe::~Groupe(){
+    int i;
+    for (i = 0; i < v.size(); i++) {
+        delete this->v[i];
+    }
 }
 

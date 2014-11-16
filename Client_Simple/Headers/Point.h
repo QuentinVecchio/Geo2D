@@ -12,9 +12,9 @@ private:
     float x;
     float y;
 public:
-    Point();
-    Point(const float x, const float y);
-    Point(const Point& );
+    *Point();
+    *Point(const float x, const float y);
+    *Point(const Point& );
     ~Point(){}
 
     float getX()const;
@@ -30,7 +30,7 @@ public:
     QDomElement toXml(QDomDocument *) const;
 	void afficher(ostream& flux) const;
 	friend ostream& operator <<(ostream& flux, const Point& p);
-    friend bool operator == (const Point p1, const Point p2);
+    friend bool operator == (const Point *p1, const Point p2);
 };
 #endif
 
