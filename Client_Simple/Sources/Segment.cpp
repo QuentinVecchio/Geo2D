@@ -49,17 +49,21 @@ void Segment::rotation(const Point *origine, float angle)
         this->p2->setX(newx);
         this->p2->setY(newy);
     }
-    else if (origine == this->p2){
-        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
-        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
+    else if (origine == *this->p2){
+        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 2;
+        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 2;
         this->setP1(Point(newx, newy).copy());
     }
     else{
         /*
-        double x = (this->p2.getX() - origine.getX()) * cos(angle * PI / 180) - (this->p2.getY() - origine.getY()) * sin(angle * PI / 180) + 1;
-        double y = (this->p2.getX() - origine.getX()) * sin(angle * PI / 180) + (this->p2.getY() - origine.getY()) * cos(angle * PI / 180) + 1;
-        this->p2.setX(x);
-        this->p2.setY(y);
+        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 2;
+        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 2;
+        this->setP1(Point(newx, newy).copy());
+
+        double newx2 = (this->p2->getX() - origine->getX()) * cos(angle * PI / 180) - (this->p2->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
+        double newy2 = (this->p2->getX() - origine->getX()) * sin(angle * PI / 180) + (this->p2->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
+        this->p2->setX(newx2);
+        this->p2->setY(newy2);
         */
     }
 }
@@ -73,11 +77,11 @@ void Segment::homothetie(const Point *centre, float rapport)
         cout << "Symétrie centrale" << endl;
     }
     else{
-        if(centre == this->getP1()){
+        if(centre == *this->getP1()){
             this->p2->setX(this->getP1()->getX() + rapport);
             this->p2->setY(this->getP1()->getY() + rapport);
         }
-        else if(centre == this->p2){
+        else if(centre == *this->p2){
             this->setP1(Point(this->p2->getX() - rapport, this->p2->getY() - rapport).copy());
         }
     }
