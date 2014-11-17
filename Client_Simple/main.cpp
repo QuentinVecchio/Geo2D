@@ -43,7 +43,7 @@ int main()
     //cout << *t;
     //s1->homothetie(*p2, 2);
     //cout << *s1;
-    //s1->rotation(p1, 1.5707963267949);
+    //s1->rotation(p2, 1.5707963267949);
     //s1->translation(p3);
     //cout << *s1;
     //c->homothetie(p1, 2);
@@ -52,7 +52,7 @@ int main()
     //p1->translation(*p2);
     //cout << *p1;
     //cout << *t;
-    //cout << t->getAire();
+    //cout << t->getAire() << endl;
 
 
     //Main pour Quentin
