@@ -10,6 +10,7 @@
 #include "Headers/Polygone.h"
 #include "Headers/Segment.h"
 #include "Headers/Triangle.h"
+#include "Headers/ExceptionGeo2D.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int main()
     //cout << *p1 << *p2 << *p3;
     Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
     //cout << *s1;
-    Cercle *c = new Cercle(p1, 1.0, Couleur::BLACK);
+    Cercle *c = new Cercle(p1, -1.0, Couleur::BLACK);
     Polygone *p = new Polygone(p3, Couleur::BLUE);
     Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
     Groupe *g = new Groupe(Couleur::GREEN);
@@ -39,7 +40,7 @@ int main()
     //cout << c->getAire() << endl;
     //p->translation(p3);
     //cout << *p;
-    //cout << *c;
+    cout << *c;
     //cout << *t;
     //s1->homothetie(*p2, 2);
     //cout << *s1;

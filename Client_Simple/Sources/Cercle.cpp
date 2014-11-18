@@ -3,7 +3,14 @@
 
 Cercle::Cercle(const Point *p, const float r, const Couleur::Couleurs c):Figure(p,c)
 {
-	this->rayon = r;
+    if(r < 0){
+        ExceptionGeo2D *e = new ExceptionGeo2D("Erreur, le rayon doit etre strictement superieur a 0");
+        cout << e->get_erreur() << endl;
+        exit(1);
+    }
+    else{
+        this->rayon = r;
+    }
 }
 
 Cercle::Cercle(const Cercle& c)

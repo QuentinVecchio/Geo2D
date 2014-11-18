@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     Sources/Segment.cpp \
     Sources/Cercle.cpp \
     Sources/Point.cpp \
-    Sources/Couleur.cpp
+    Sources/Couleur.cpp \
+    Sources/ExceptionGeo2D.cpp
 
 HEADERS  += \
     network.h \
@@ -35,4 +36,5 @@ HEADERS  += \
     Headers/Cercle.h \
     Headers/Segment.h \
     Headers/Point.h \
-    Headers/Couleur.h
+    Headers/Couleur.h \
+    Headers/ExceptionGeo2D.h

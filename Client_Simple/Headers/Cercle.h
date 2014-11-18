@@ -4,6 +4,7 @@
 #include <QtXml>
 #include "QString"
 #include "../Headers/Figure.h"
+#include "../Headers/ExceptionGeo2D.h"
 
 class Cercle : public Figure
 {
