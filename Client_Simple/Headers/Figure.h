@@ -4,6 +4,7 @@
 #include "../Headers/Point.h"
 #include "../Headers/Couleur.h"
 #include <iostream>
+#include <string>
 #include <QtXml>
 
 using namespace std;
