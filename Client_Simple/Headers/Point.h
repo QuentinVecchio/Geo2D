@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <QtXml>
-
+#include <math.h>
 using namespace std;
 
 class Point 

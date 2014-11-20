@@ -11,50 +11,86 @@
 #include "Headers/Segment.h"
 #include "Headers/Triangle.h"
 #include "Headers/ExceptionGeo2D.h"
-
+#include <iomanip>
 using namespace std;
 
 int main()
 {
+    /**
+      Angles utiles
+      90° ==> 1.5707963267949
+      180° ==> 3.1415926535898
+      270° ==> 4.7123889803847
+      360° ==> 6.2831853071796
+      */
 
     // Main pour Dylan
-
+    /*
+    Groupe *g = new Groupe(Couleur::GREEN);
+    */
+    /**
+      Test point
+      */
+    /*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Point *p3 = new Point(3.0,1.0);
-    //cout << *p1 << *p2 << *p3;
-    Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
-    //cout << *s1;
-    Cercle *c = new Cercle(p1, 1.0, Couleur::BLACK);
-    Polygone *p = new Polygone(p3, Couleur::BLUE);
-    Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
-    Groupe *g = new Groupe(Couleur::GREEN);
-    //p->add(s1);
-    g->add(s1);
-    g->add(p);
-    g->add(c);
-    g->add(t);
-    cout << *g;
-    //cout << *p;
-    //cout << s1->getLongueur() << endl;
-    //cout << c->getAire() << endl;
-    //p->translation(p3);
-    //cout << *p;
-    //cout << *c;
-    //cout << *t;
-    //s1->homothetie(*p2, 2);
-    //cout << *s1;
-    //s1->rotation(p2, 1.5707963267949);
-    //s1->translation(p3);
-    //cout << *s1;
-    //c->homothetie(p1, 2);
-    //cout << *c;
-    //cout << *p1;
-    //p1->translation(*p2);
-    //cout << *p1;
-    //cout << *t;
-    //cout << t->getAire() << endl;
+    cout << *p2;
+    p2->rotation(p1, 6.2831853071796);
+    cout << *p2;
+    */
 
+    /**
+      Test segment, rotation avec sur p1 à revoir
+      */
+    /*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Point *p3 = new Point(10.0, 10.0);
+    Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
+    cout << *s1;
+    s1->rotation(p1, 3.1415926535898);
+    cout << *s1;
+    */
+
+    /**
+      Test cercle, rotation à faire avec point externe
+      */
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
+    cout << *c;
+    c->rotation(Point(0.0, 0.0).copy(), 3.1415926535898);
+    cout << *c;
+
+    /**
+      Test triangle, homothetie à faire, rotation à revoir
+      */
+    /*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,3.0);
+    Point *p3 = new Point(3.0, 1.0);
+    Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
+    cout << *t;
+    t->rotation(p1,3.1415926535898);
+    cout << *t;
+    */
+
+    /**
+      Test polygone, rotation à revoir via segment, homothetie à revoir
+      */
+    /*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Point *p3 = new Point(5.0, 5.0);
+    Segment *s1 = new Segment(p1, p2, Couleur::CYAN);
+    Segment *s2 = new Segment(p2, p3, Couleur::RED);
+    Polygone *p = new Polygone(p3, Couleur::BLUE);
+    p->add(s1); p->add(s2);
+    cout << *p;
+    p->homothetie(p2, 2);
+    cout << *p;
+    */
 
     //Main pour Quentin
     /*

@@ -19,7 +19,7 @@ public:
 
     float getAire()const;
 
-    void rotation(const Point*, float){}
+    void rotation(const Point *origine, float angle);
     void translation(const Point *p);
     void homothetie(const Point *centre,  float rapport);
 
