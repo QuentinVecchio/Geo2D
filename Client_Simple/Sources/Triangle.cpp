@@ -58,23 +58,69 @@ void Triangle::translation(const Point *p)
 
 void Triangle::rotation(const Point *origine, float angle)
 {
-    float PI = 4.0 * atan(1.0);
-    //Conversion angle en degré car donné en radian
-    angle = 180 * ((angle) / PI);
-    // Construction du nouveau point selon le point d'origine donné
     if (origine == *this->getP1()){
-        double newx = (this->p2->getX() - origine->getX()) * cos(angle * PI / 180) - (this->p2->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
-        double newy = (this->p2->getX() - origine->getX()) * sin(angle * PI / 180) + (this->p2->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
-        this->p2->setX(newx);
-        this->p2->setY(newy);
+        float X2 = this->p2->getX() - origine->getX();
+        float Y2 = this->p2->getY() - origine->getY();
+        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->p2->setX(newx2);
+        this->p2->setY(newy2);
+
+        float X3 = this->p3->getX() - origine->getX();
+        float Y3 = this->p3->getY() - origine->getY();
+        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
+        this->p3->setX(newx3);
+        this->p3->setY(newy3);
     }
     else if (origine == *this->p2){
-        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 2;
-        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 2;
+        float X = this->getP1()->getX() - origine->getX();
+        float Y = this->getP1()->getY() - origine->getY();
+        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
-    }
-    else if (origine == *this->p3){
 
+        float X3 = this->p3->getX() - origine->getX();
+        float Y3 = this->p3->getY() - origine->getY();
+        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
+        this->p3->setX(newx3);
+        this->p3->setY(newy3);
+    }
+    else if(origine == *this->p3){
+        float X = this->getP1()->getX() - origine->getX();
+        float Y = this->getP1()->getY() - origine->getY();
+        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        this->setP1(Point(newx, newy).copy());
+
+        float X2 = this->p2->getX() - origine->getX();
+        float Y2 = this->p2->getY() - origine->getY();
+        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->p2->setX(newx2);
+        this->p2->setY(newy2);
+    }
+    else if(origine == Point(0.0, 0.0)){
+        float X = this->getP1()->getX() - origine->getX();
+        float Y = this->getP1()->getY() - origine->getY();
+        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        this->setP1(Point(newx, newy).copy());
+
+        float X2 = this->p2->getX() - origine->getX();
+        float Y2 = this->p2->getY() - origine->getY();
+        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->p2->setX(newx2);
+        this->p2->setY(newy2);
+
+        float X3 = this->p3->getX() - origine->getX();
+        float Y3 = this->p3->getY() - origine->getY();
+        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
+        this->p3->setX(newx3);
+        this->p3->setY(newy3);
     }
 }
 

@@ -26,7 +26,7 @@ public:
 
     virtual void translation(const Point *p) = 0;
     virtual void homothetie(const Point *p , float rapport) = 0;
-    virtual void rotation(const Point *p, float rapport) = 0;
+    virtual void rotation(const Point *p, float angle) = 0;
 
     Point *getP1() const;
     Couleur::Couleurs getC()const;

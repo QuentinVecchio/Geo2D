@@ -1,5 +1,6 @@
 #include "../Headers/Segment.h"
 #include <math.h>
+
 Segment::Segment(const Point *p1, const Point *p2, const Couleur::Couleurs c):Figure(p1->copy(),c)
 {
     this->p2 = p2->copy();
@@ -26,7 +27,6 @@ float Segment::getLongueur()const{
 
 void Segment::translation(const Point *p)
 {
-    cout << this->getP1();
     this->setP1(Point(this->getP1()->getX() + p->getX(), this->getP1()->getY() + p->getY()).copy());
     this->p2->setX(p2->getX() + p->getX());
     this->p2->setY(p2->getY() + p->getY());
@@ -39,32 +39,34 @@ Segment* Segment::copy() const
 
 void Segment::rotation(const Point *origine, float angle)
 {
-    float PI = 4.0 * atan(1.0);
-    //Conversion angle en degré car donné en radian
-    angle = 180 * ((angle) / PI);
     // Construction du nouveau point selon le point d'origine donné
     if (origine == *this->getP1()){
-        double newx = (this->p2->getX() - origine->getX()) * cos(angle * PI / 180) - (this->p2->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
-        double newy = (this->p2->getX() - origine->getX()) * sin(angle * PI / 180) + (this->p2->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
-        this->p2->setX(newx);
-        this->p2->setY(newy);
-    }
-    else if (origine == *this->p2){
-        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 2;
-        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 2;
-        this->setP1(Point(newx, newy).copy());
-    }
-    else{
-        /*
-        double newx = (this->getP1()->getX() - origine->getX()) * cos(angle * PI / 180) - (this->getP1()->getY() - origine->getY()) * sin(angle * PI / 180) + 2;
-        double newy = (this->getP1()->getX() - origine->getX()) * sin(angle * PI / 180) + (this->getP1()->getY() - origine->getY()) * cos(angle * PI / 180) + 2;
-        this->setP1(Point(newx, newy).copy());
-
-        double newx2 = (this->p2->getX() - origine->getX()) * cos(angle * PI / 180) - (this->p2->getY() - origine->getY()) * sin(angle * PI / 180) + 1;
-        double newy2 = (this->p2->getX() - origine->getX()) * sin(angle * PI / 180) + (this->p2->getY() - origine->getY()) * cos(angle * PI / 180) + 1;
+        float X2 = this->p2->getX() - origine->getX();
+        float Y2 = this->p2->getY() - origine->getY();
+        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
         this->p2->setX(newx2);
         this->p2->setY(newy2);
-        */
+    }
+    else if (origine == *this->p2){
+        float d = sqrt( pow((origine->getX() - this->getP1()->getX()), 2) + pow((origine->getY() - this->getP1()->getY()), 2));
+        float newx = d * cos(angle) + origine->getX();
+        float newy = d * sin(angle) + origine->getY();
+        this->setP1(Point(newx, newy).copy());
+    }
+    else if(origine == Point(0.0, 0.0)){
+        float X = this->getP1()->getX() - origine->getX();
+        float Y = this->getP1()->getY() - origine->getY();
+        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        this->setP1(Point(newx, newy).copy());
+
+        float X2 = this->p2->getX() - origine->getX();
+        float Y2 = this->p2->getY() - origine->getY();
+        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->p2->setX(newx2);
+        this->p2->setY(newy2);
     }
 }
 

@@ -95,7 +95,7 @@ private:
 public:
     AffObjet(ostream& flux) :flux(flux){}
 	void operator () (Segment* s){
-        flux << *s << endl;
+        flux <<  *s << endl;
 	}
 
 };
@@ -103,7 +103,9 @@ public:
 ostream& operator <<(ostream& flux, const Polygone& p)
 {
 	AffObjet aff(flux);
+    cout << "Polygone[ " << endl;
     for_each(p.v.begin(), p.v.end(), AffObjet(flux));
+    cout << "]" << endl;
 	return flux;
 }
 
