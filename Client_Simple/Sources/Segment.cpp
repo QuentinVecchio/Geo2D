@@ -108,7 +108,6 @@ QDomElement Segment::toXml(QDomDocument * dom) const
 void Segment::afficher(ostream& flux) const
 {
     flux << "Segment[ Point[x = " << this->getP1()->getX() << ", y = " << this->getP1()->getY() << "] , Point[x = " << this->getP2()->getX() << ", y = " << this->getP2()->getY() << "]" << ", couleur = " << Couleur::getCouleur(this->getC()).toStdString() << "]" << endl;
-
 }
 
 ostream& operator <<(ostream& flux, const Segment& s)

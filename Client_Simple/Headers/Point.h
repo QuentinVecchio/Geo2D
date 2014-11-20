@@ -23,8 +23,9 @@ public:
     void setX(const float vx);
     void setY(const float vy);
 
-    void rotation(const Point origine, float angle);
-	void translation(const Point t);
+    void rotation(const Point *origine, float angle);
+    void translation(const Point *p);
+    void homothetie(const Point *centre, float rapport);
 
     Point* copy() const;
     QDomElement toXml(QDomDocument *) const;

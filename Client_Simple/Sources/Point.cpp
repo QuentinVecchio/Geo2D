@@ -38,22 +38,25 @@ void Point::setY(const float vy)
     this->y = vy;
 }
 
-void Point::rotation(const Point origine, float angle)
+void Point::rotation(const Point *origine, float angle)
 {
     float PI = 4.0 * atan(1.0);
-    double newx = (x - origine.getX()) * cos(angle * PI / 180) - (y - origine.getY()) * sin(angle * PI / 180) + 1;
-    double newy = (x - origine.getX()) * sin(angle * PI / 180) + (y - origine.getY()) * cos(angle * PI / 180) + 1;
+    double newx = (x - origine->getX()) * cos(angle * PI / 180) - (y - origine->getY()) * sin(angle * PI / 180) + 1;
+    double newy = (x - origine->getX()) * sin(angle * PI / 180) + (y - origine->getY()) * cos(angle * PI / 180) + 1;
     this->x = newx;
     this->y = newy;
 
 }
 
-void Point::translation(const Point t)
+void Point::translation(const Point *p)
 {
-	this->x += t.getX();
-	this->y += t.getY();
+    this->x += p->getX();
+    this->y += p->getY();
 }
 
+void Point::homothetie(const Point *centre, float rapport){
+
+}
 
 Point* Point::copy() const
 {
