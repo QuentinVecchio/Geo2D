@@ -1,5 +1,7 @@
 package Construction;
 
+import org.w3c.dom.Node;
+
 public abstract class ConstructeurCOR extends Constructeur
 {
 	private Constructeur suivant;
@@ -9,7 +11,7 @@ public abstract class ConstructeurCOR extends Constructeur
 		suivant = constructeurSuivant;
 	}
 
-	boolean resoudre(String s) 
+	boolean resoudre(Node s) 
 	{
 		boolean b = this.resoudre1(s);
 		if  (b ==  true) 
@@ -20,5 +22,5 @@ public abstract class ConstructeurCOR extends Constructeur
 			return false;
 	}
 
-	abstract public boolean resoudre1(String s);
+	abstract public boolean resoudre1(Node s);
 }

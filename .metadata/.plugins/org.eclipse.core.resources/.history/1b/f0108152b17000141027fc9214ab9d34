@@ -1,0 +1,89 @@
+package Construction;
+
+import java.io.IOException;
+import java.io.StringReader;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
+
+import Erreur.Erreur;
+
+public class ControllerConstruction 
+{
+	private String s;
+	private ConstructeurCOR COR;
+	/*
+	 * Prend en paramètre le string contenant tout le xml
+	 */
+	public ControllerConstruction(String s)
+	{
+			this.s = s.replace("\n", "").replace("\r", "").replace("\t", "").replace("\f", "");
+			this.appelConstructeurs();
+	}
+	
+	public void constructionListeConstructeurs()
+	{
+		/*
+		 * Création de tous les constructeurs
+		 */
+		COR = new ConstructeurPoint(null);
+		//COR = new ConstructeurSegment(COR);
+		//COR = new ConstructeurCarre(COR);
+	}
+	
+	public void appelConstructeurs()
+	{
+		constructionListeConstructeurs();
+		//Création du doc xml
+		Document document = convertStringToDocument(this.s);
+		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		final Element racine = document.getDocumentElement();
+		//Test pour savoir si le fichier est bon ou non
+		    if(racine.getNodeName().equalsIgnoreCase("dessins"))
+		    {
+		    	final NodeList racineNoeuds = racine.getChildNodes();
+		    	final int nbRacineNoeuds = racineNoeuds.getLength();
+		    	for (int i = 0; i<nbRacineNoeuds; i++) {
+		    		if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
+		    		{
+		    	        final Node personne = racineNoeuds.item(i);
+		    	        System.out.println(personne.getNodeName());
+		    	    }
+		    	}
+		    }
+		}
+		catch (final ParserConfigurationException e) {
+		    e.printStackTrace();
+		}
+		catch (final SAXException e) {
+		    e.printStackTrace();
+		}
+		catch (final IOException e) {
+		    e.printStackTrace();
+		}
+	}
+	
+	private Document convertStringToDocument(String xmlStr) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+        DocumentBuilder builder;  
+        try 
+        {  
+            builder = factory.newDocumentBuilder();  
+            Document doc = builder.parse( new InputSource( new StringReader( xmlStr ) ) ); 
+            return doc;
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        } 
+        return null;
+    }
+}

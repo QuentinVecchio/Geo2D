@@ -147,8 +147,8 @@ QDomElement Triangle::toXml(QDomDocument * dom) const
     QDomElement point = this->getP1()->toXml(dom);
     nom.appendChild(point);
     //Création de la balise point2
-    QDomElement point1 = this->getP2()->toXml(dom);
-    nom.appendChild(point1);
+    QDomElement point2 = this->getP2()->toXml(dom);
+    nom.appendChild(point2);
     //Création de la balise point3
     QDomElement point3 = this->getP3()->toXml(dom);
     nom.appendChild(point3);

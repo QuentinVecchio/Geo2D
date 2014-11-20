@@ -1,41 +1,27 @@
 package Construction;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
+import org.xml.sax.InputSource;
 import Erreur.Erreur;
 
 public class ControllerConstruction 
 {
-	private FileOutputStream fos;
-	private File f;
+	private String s;
 	private ConstructeurCOR COR;
 	/*
 	 * Prend en paramètre le string contenant tout le xml
 	 */
 	public ControllerConstruction(String s)
 	{
-		try
-		{
-			f = new File("fichier.xml");
-			fos = new FileOutputStream(f);
-			fos.write(s.getBytes());
-		}
-		catch(IOException e)
-		{
-			new Erreur("Erreur construction xml.");
-		}	
+			this.s = s.replace("\n", "").replace("\r", "").replace("\t", "").replace("\f", "");
+			this.appelConstructeurs();
 	}
 	
 	public void constructionListeConstructeurs()
@@ -43,43 +29,47 @@ public class ControllerConstruction
 		/*
 		 * Création de tous les constructeurs
 		 */
-		COR = new ConstructeurPoint(null);
-		//COR = new ConstructeurSegment(COR);
-		//COR = new ConstructeurCarre(COR);
+		COR = new ConstructeurCercle(null);
+		COR = new ConstructeurSegment(COR);
+		COR = new ConstructeurTriangle(COR);
+		COR = new ConstructeurPolygone(COR);
 	}
 	
 	public void appelConstructeurs()
 	{
 		constructionListeConstructeurs();
-		//Lecture du fichier xml
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		try 
+		//Création du doc xml
+		Document document = convertStringToDocument(this.s);
+		final Element racine = document.getDocumentElement();
+		//Test pour savoir si le fichier est bon ou non
+		if(racine.getNodeName().equalsIgnoreCase("dessins"))
 		{
-		    final DocumentBuilder builder = factory.newDocumentBuilder();
-		    final Document document= builder.parse(f);
-		    final Element racine = document.getDocumentElement();
-		    //Test pour savoir si le fichier est bon ou non
-		    if(racine.getNodeName().equalsIgnoreCase("groupe"))
+		    final NodeList racineNoeuds = racine.getChildNodes();
+		    final int nbRacineNoeuds = racineNoeuds.getLength();
+		    for (int i = 0; i<nbRacineNoeuds; i++) 
 		    {
-		    	final NodeList racineNoeuds = racine.getChildNodes();
-		    	final int nbRacineNoeuds = racineNoeuds.getLength();
-		    	for (int i = 0; i<nbRacineNoeuds; i++) {
-		    		if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
-		    		{
-		    	        final Node personne = racineNoeuds.item(i);
-		    	        System.out.println(personne.getNodeName());
-		    	    }
+		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
+		    	{
+		    	        final Node figure = racineNoeuds.item(i);
+		    	        if(this.COR.resoudre(figure) == false)
+		    	        	new Erreur("Erreur de construction, figure inconnu.");
 		    	}
 		    }
 		}
-		catch (final ParserConfigurationException e) {
-		    e.printStackTrace();
-		}
-		catch (final SAXException e) {
-		    e.printStackTrace();
-		}
-		catch (final IOException e) {
-		    e.printStackTrace();
-		}
 	}
+	
+	private Document convertStringToDocument(String xmlStr) 
+	{
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+        DocumentBuilder builder;  
+        try 
+        {  
+            builder = factory.newDocumentBuilder();  
+            Document doc = builder.parse( new InputSource( new StringReader( xmlStr ) ) ); 
+            return doc;
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        } 
+        return null;
+    }
 }

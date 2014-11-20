@@ -1,0 +1,43 @@
+package Construction;
+
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class ConstructeurCercle extends ConstructeurCOR
+{
+
+	ConstructeurCercle(ConstructeurCOR constructeurSuivant) {
+		super(constructeurSuivant);
+		
+	}
+
+	public boolean resoudre1(Node s) 
+	{
+		if(s.getNodeName().equalsIgnoreCase("cercle"))
+		{
+			NodeList list = s.getChildNodes();
+			float x = 0,y = 0,rayon = 0;
+			String couleur;
+			for (int i = 0; i<list.getLength(); i++) 
+		    {
+		    	if(list.item(i).getNodeName().equalsIgnoreCase("rayon"))
+		    	{
+		    		
+		    	}
+		    	else if(list.item(i).getNodeName().equalsIgnoreCase("point"))
+		    	{
+		    		
+		    	}
+		    	else if(list.item(i).getNodeName().equalsIgnoreCase("couleur"))
+		    	{
+		    		couleur = list.item(i).getTextContent();
+		    	}
+		    }
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
