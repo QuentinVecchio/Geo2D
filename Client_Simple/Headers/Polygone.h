@@ -10,7 +10,7 @@ class Polygone : public Figure
 private:
     vector<Segment*> v;
 public:
-    Polygone(const Point*, const Couleur::Couleurs);
+    Polygone(const Point*p, const Couleur::Couleurs);
     Polygone(const Point *p, const Couleur::Couleurs, const vector<Segment*> polygone);
     Polygone(const Polygone&);
     ~Polygone();
