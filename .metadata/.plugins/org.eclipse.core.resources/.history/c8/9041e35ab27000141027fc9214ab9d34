@@ -1,0 +1,24 @@
+package Construction;
+
+import org.w3c.dom.Node;
+
+public class ConstructeurCercle extends ConstructeurCOR
+{
+
+	ConstructeurCercle(ConstructeurCOR constructeurSuivant) {
+		super(constructeurSuivant);
+		
+	}
+
+	public boolean resoudre1(Node s) 
+	{
+		if(s.getNodeName().equalsIgnoreCase("cercle"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
