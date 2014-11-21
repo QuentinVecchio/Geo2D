@@ -55,7 +55,7 @@ void Polygone::translation(const Point *p)
 	}
 }
 
-void Polygone::rotation(const Point *origine, float angle)
+void Polygone::rotation(const Point *origine, double angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
