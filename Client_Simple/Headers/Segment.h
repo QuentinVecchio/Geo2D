@@ -8,6 +8,7 @@ class Segment : public Figure
 {
 private:
     Point *p2;
+    float getAire()const{ return 0;}
 public:
     Segment(const Point *p1, const Point *p2, const Couleur::Couleurs c);
     Segment(const Segment&);
@@ -18,7 +19,7 @@ public:
     float getLongueur()const;
 
     void translation(const Point *p);
-    void rotation(const Point *origine, float angle);
+    void rotation(const Point *origine, double angle);
     void homothetie(const Point *centre, float rapport);
 
     Segment* copy() const;
