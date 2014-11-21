@@ -37,7 +37,7 @@ Segment* Segment::copy() const
     return new Segment(*this);
 }
 
-void Segment::rotation(const Point *origine, float angle)
+void Segment::rotation(const Point *origine, double angle)
 {
     // Construction du nouveau point selon le point d'origine donné
     if (origine == *this->getP1()){
@@ -49,9 +49,10 @@ void Segment::rotation(const Point *origine, float angle)
         this->p2->setY(newy2);
     }
     else if (origine == *this->p2){
-        float d = sqrt( pow((origine->getX() - this->getP1()->getX()), 2) + pow((origine->getY() - this->getP1()->getY()), 2));
-        float newx = d * cos(angle) + origine->getX();
-        float newy = d * sin(angle) + origine->getY();
+        float X = this->getP1()->getX() - origine->getX();
+        float Y = this->getP1()->getY() - origine->getY();
+        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
     }
     else if(origine == Point(0.0, 0.0)){
@@ -74,9 +75,6 @@ void Segment::homothetie(const Point *centre, float rapport)
 {
     if(rapport == 1){
         cout << "Les points restent invariants avec un rapport de 1" << endl;
-    }
-    else if(rapport == -1){
-        cout << "Symétrie centrale" << endl;
     }
     else{
         if(centre == *this->getP1()){
