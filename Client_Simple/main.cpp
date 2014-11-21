@@ -24,7 +24,6 @@ int main()
       360° ==> 6.2831853071796
       */
 
-    // Main pour Dylan
     /*
     Groupe *g = new Groupe(Couleur::GREEN);
     */
@@ -41,9 +40,9 @@ int main()
     */
 
     /**
-      Test segment, rotation avec sur p1 à revoir
+      Test segment
       */
-    /*
+/*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Point *p3 = new Point(10.0, 10.0);
@@ -51,31 +50,31 @@ int main()
     cout << *s1;
     s1->rotation(p1, 3.1415926535898);
     cout << *s1;
-    */
+*/
 
     /**
-      Test cercle, rotation à faire avec point externe
+      Test cercle
       */
+/*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
     cout << *c;
-    c->rotation(Point(0.0, 0.0).copy(), 3.1415926535898);
+    c->rotation(p1, 6.2831853071796);
     cout << *c;
-
+*/
     /**
-      Test triangle, homothetie à faire, rotation à revoir
+      Test triangle, homothetie à faire
       */
-    /*
+/*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,3.0);
     Point *p3 = new Point(3.0, 1.0);
     Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
     cout << *t;
-    t->rotation(p1,3.1415926535898);
+    t->rotation(p1, 3.1415926535898);
     cout << *t;
-    */
-
+*/
     /**
       Test polygone, rotation à revoir via segment, homothetie à revoir
       */

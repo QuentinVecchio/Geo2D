@@ -26,7 +26,7 @@ public:
 
     virtual void translation(const Point *p) = 0;
     virtual void homothetie(const Point *p , float rapport) = 0;
-    virtual void rotation(const Point *p, float angle) = 0;
+    virtual void rotation(const Point *p, double angle) = 0;
 
     Point *getP1() const;
     Couleur::Couleurs getC()const;
@@ -34,7 +34,7 @@ public:
     void setP1(const Point *p);
     void setC(const Couleur::Couleurs c);
 
-    float getAire()const{ return NULL;}
+    virtual float getAire() const = 0;
 
     virtual QDomElement toXml(QDomDocument *) const = 0;
     virtual void afficher(ostream& flux) const;
