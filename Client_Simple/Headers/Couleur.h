@@ -10,6 +10,7 @@ private:
     static const QString strCouleur[];
 public:
     static QString getCouleur(const int i);
-	enum Couleurs { BLACK, BLUE, RED, GREEN, YELLOW, CYAN, NB__ };
+    enum Couleurs { BLACK, BLUE, RED, GREEN, YELLOW, CYAN, NB__ };
+    static Couleurs getNameCouleur(const QString);
 };
 #endif

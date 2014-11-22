@@ -21,6 +21,5 @@ public abstract class ConstructeurCOR extends Constructeur
 		else    
 			return false;
 	}
-
-	abstract public boolean resoudre1(Node s);
+	abstract public boolean resoudre1(Node s, Graphics);
 }
