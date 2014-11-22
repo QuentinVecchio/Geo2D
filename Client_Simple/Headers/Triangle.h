@@ -20,7 +20,7 @@ public:
     Point *getP3()const;
     void setP3(const Point *p);
 
-    float getAire()const;
+    float getAire() const;
 
     void translation(const Point *p);
     void rotation(const Point *origine, double angle);

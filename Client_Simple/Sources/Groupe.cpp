@@ -3,6 +3,7 @@
 
 Groupe::Groupe(const Couleur::Couleurs c){
     this->c = c;
+    this->dom = new QDomDocument();
 }
 
 Groupe::Groupe(const vector<Figure*> groupe, const Couleur::Couleurs c)
@@ -62,7 +63,7 @@ void Groupe::translation(const Point *p)
 	}
 }
 
-void Groupe::rotation(const Point *origine, float angle)
+void Groupe::rotation(const Point *origine, double angle)
 {
     for (int i = 0; i < v.size(); i++)
     {
@@ -83,9 +84,24 @@ Groupe* Groupe::copy() const
     return new Groupe(*this);
 }
 
-QString Groupe::toXml() const
+QDomElement Groupe::toXml(QDomDocument *doc) const
 {
-    QDomDocument *dom = new QDomDocument();
+    //Création de la balise groupe
+    QDomElement nom = doc->createElement("groupe");
+    for(int i=0;i<this->nbElements();i++)
+    {
+        nom.appendChild(this->v[i]->toXml(dom));
+    }
+    //Création de la balise couleur
+    QDomElement couleur = dom->createElement("couleur");
+    QDomText c = dom->createTextNode(Couleur::getCouleur(this->getC()));
+    couleur.appendChild(c);
+    nom.appendChild(couleur);
+    return nom;
+}
+
+QString Groupe::toStringXml() const
+{
     QFile *file = new QFile("groupe.xml");
     QTextStream *out = new QTextStream();
     out->setDevice(file);
@@ -109,6 +125,64 @@ QString Groupe::toXml() const
     s.replace("\r","");
     s.replace("\n","");
     return s;
+}
+
+void Groupe::open(QString s)
+{
+    QFile *f = new QFile(s);
+    this->dom = new QDomDocument();
+    if(!f->open(QIODevice::ReadOnly))
+    {
+        cout << "Erreur lecture de fichier." << endl;
+        return;
+    }
+    if (!this->dom->setContent(f))
+    {
+        //Appel des constructeurs
+        ConstructeurCOR *COR = new ConstructeurCercle(NULL);
+        COR = new ConstructeurSegment(COR);
+        COR = new ConstructeurPolygone(COR);
+        COR = new ConstructeurTriangle(COR);
+        COR = new ConstructeurGroupe(COR);
+
+        //Initialisation XML
+        QDomElement racine = this->dom->documentElement();
+        QDomNode *noeud = new QDomNode(racine.firstChild());//Recursive
+        if(racine.nodeName() == "dessin")
+        {
+            while(!noeud->isNull())
+            {
+                //On envoie le noeud à l'expert
+                Figure *f = COR->resoudre(noeud);
+                if(f == NULL)
+                {
+                    cout << "Erreur figure inconnu, fichier corrompu." << endl;
+                    return;
+                }
+                else
+                {
+                    this->add(f);
+                    *noeud = noeud->nextSibling();//On passe à l'objet suivant
+                }
+            }
+        }
+        f->close();
+    }
+}
+
+void Groupe::save(QString s) const
+{
+    this->toStringXml();
+    QFile *f = new QFile(s);
+    QTextStream out;
+    if (!f->open(QIODevice::WriteOnly)) // ouverture du fichier de sauvegarde
+    {
+        cout << "Erreur de sauvegarde." << endl;
+        return;
+    }
+    out.setDevice(f);
+    this->dom->save(out,2);
+    f->close();
 }
 
 class AffObjet{

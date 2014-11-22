@@ -14,7 +14,7 @@
 #include <iomanip>
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
     /**
       Angles utiles
@@ -92,7 +92,6 @@ int main()
     */
 
     //Main pour Quentin
-    /*
     QApplication a(argc, argv);
     //Début de programme
         cout << "Bienvenue dans le client simple Geo2D" << endl;
@@ -102,8 +101,8 @@ int main()
         Network *network = new Network("127.0.0.1","2107");
 
     //Création des figures
-        Groupe *groupe = new Groupe();
-        Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
+        Groupe *groupe = new Groupe(Couleur::BLACK);
+        /*Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
         Segment *s = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
         Triangle *t = new Triangle(new Point(1,1),new Point(2,2),new Point(3,3),Couleur::BLACK);
         //Création d'un polygone
@@ -120,15 +119,18 @@ int main()
         groupe->add(t);
         groupe->add(p);
 
+    //Sauvegarde de groupe
+        groupe->save("/Users/quentinvecchio/Desktop/test.xml");*/
+        groupe->open("/Users/quentinvecchio/Desktop/test.xml");
+
     //Mise en place du xml pour envoie vers serveur
-        QString xml = groupe->toXml();
+        QString xml = groupe->toStringXml();
         string e = xml.toStdString();
         cout << e << endl;
 
     //Envoie des données aux serveurs
-       network->send(xml);
+       //network->send(xml);
 
    //Fin de programme
        return a.exec();
-      */
 }

@@ -9,7 +9,7 @@ class Polygone : public Figure
 {
 private:
     vector<Segment*> v;
-    float getAire()const{return 0;}
+    float getAire()const{ return 0;};
 public:
     Polygone(const Point*p, const Couleur::Couleurs);
     Polygone(const Point *p, const Couleur::Couleurs, const vector<Segment*> polygone);
@@ -23,7 +23,7 @@ public:
 	int nbElements()const;
 
     void translation(const Point *p);
-    void rotation(const Point *origine, double angle);
+    void rotation(const Point *origine, float angle);
     void homothetie(const Point *centre, float rapport);
 
     Polygone* copy() const;

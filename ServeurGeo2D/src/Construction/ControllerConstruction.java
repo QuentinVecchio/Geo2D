@@ -1,14 +1,19 @@
 package Construction;
 
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+
 import Erreur.Erreur;
 
 public class ControllerConstruction 
@@ -33,10 +38,31 @@ public class ControllerConstruction
 		COR = new ConstructeurSegment(COR);
 		COR = new ConstructeurTriangle(COR);
 		COR = new ConstructeurPolygone(COR);
+		COR = new ConstructeurGroupe(COR);
 	}
 	
 	public void appelConstructeurs()
 	{
+		//Création de la fenetre
+		Frame fenetre; 
+		fenetre = new Frame("Dessin");    
+		fenetre.setBounds(30, 60, 400, 400);              
+		fenetre.setVisible(true);
+		fenetre.setIgnoreRepaint(true);
+		int numBuffers = 1;
+		fenetre.createBufferStrategy(numBuffers);  
+		try 
+		{
+			Thread.sleep(150);
+		} 
+		catch (InterruptedException e) 
+		{
+			// TODO Auto-generated catch block
+			new Erreur("Erreur Thread dessiner.");
+		}  
+		BufferStrategy strategie = fenetre.getBufferStrategy();
+		Graphics graphics = strategie.getDrawGraphics();        
+
 		constructionListeConstructeurs();
 		//Création du doc xml
 		Document document = convertStringToDocument(this.s);
