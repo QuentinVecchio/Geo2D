@@ -1,7 +1,5 @@
 package Construction;
 
-import java.awt.Graphics;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -15,7 +13,7 @@ public class ConstructeurGroupe extends ConstructeurCOR
 		
 	}
 
-	public boolean resoudre1(Node s, Graphics g) 
+	public boolean resoudre1(Node s) 
 	{
 		if(s.getNodeName().equalsIgnoreCase("groupe"))
 		{
@@ -31,7 +29,7 @@ public class ConstructeurGroupe extends ConstructeurCOR
 		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
 		    	{
 		    	        final Node figure = racineNoeuds.item(i);
-		    	        if(COR.resoudre(figure,g) == false)
+		    	        if(COR.resoudre(figure) == false)
 		    	        	new Erreur("Erreur de construction, figure inconnu.");
 		    	}
 		    }

@@ -1,7 +1,5 @@
 package Construction;
 
-import java.awt.Graphics;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -13,7 +11,7 @@ public class ConstructeurCercle extends ConstructeurCOR
 		
 	}
 
-	public boolean resoudre1(Node s, Graphics g) 
+	public boolean resoudre1(Node s) 
 	{
 		if(s.getNodeName().equalsIgnoreCase("cercle"))
 		{
@@ -47,7 +45,6 @@ public class ConstructeurCercle extends ConstructeurCOR
 		    	}
 		    }
 			//On dessine sur la fenetre
-			g.drawOval((int)x, (int)y, (int)rayon*2, (int)rayon*2);
 			return true;
 		}
 		else

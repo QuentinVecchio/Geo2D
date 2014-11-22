@@ -5,39 +5,41 @@ import java.awt.Graphics;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class ConstructeurCercle extends ConstructeurCOR
+public class ConstructeurSegment extends ConstructeurCOR
 {
 
-	ConstructeurCercle(ConstructeurCOR constructeurSuivant) {
+	ConstructeurSegment(ConstructeurCOR constructeurSuivant) {
 		super(constructeurSuivant);
 		
 	}
 
 	public boolean resoudre1(Node s, Graphics g) 
 	{
-		if(s.getNodeName().equalsIgnoreCase("cercle"))
+		if(s.getNodeName().equalsIgnoreCase("segment"))
 		{
 			NodeList list = s.getChildNodes();
-			float x = 0,y = 0,rayon = 0;
+			float x1 = 0,y1 = 0,x2 = 0, y2 = 0;
 			String couleur;
 			for (int i = 0; i<list.getLength(); i++) 
 		    {
-		    	if(list.item(i).getNodeName().equalsIgnoreCase("rayon"))
-		    	{
-		    		rayon = Float.parseFloat(list.item(i).getTextContent());
-		    	}
-		    	else if(list.item(i).getNodeName().equalsIgnoreCase("point"))
+		    	if(list.item(i).getNodeName().equalsIgnoreCase("point"))
 		    	{
 		    		NodeList point = list.item(i).getChildNodes();
 		    		for(int a = 0;a<point.getLength();a++)
 		    		{
 		    			if(point.item(a).getNodeName().equalsIgnoreCase("X"))
 				    	{
-				    		x = Float.parseFloat(point.item(a).getTextContent());
+		    				if(x1 == 0)
+		    					x1 = Float.parseFloat(point.item(a).getTextContent());
+		    				else
+		    					x2 = Float.parseFloat(point.item(a).getTextContent());
 				    	}
 				    	else if(point.item(a).getNodeName().equalsIgnoreCase("Y"))
 				    	{
-				    		y = Float.parseFloat(point.item(a).getTextContent());
+				    		if(y1 == 0)
+				    			y1 = Float.parseFloat(point.item(a).getTextContent());
+				    		else
+				    			y2 = Float.parseFloat(point.item(a).getTextContent());
 				    	}
 		    		}
 		    	}
@@ -47,7 +49,7 @@ public class ConstructeurCercle extends ConstructeurCOR
 		    	}
 		    }
 			//On dessine sur la fenetre
-			g.drawOval((int)x, (int)y, (int)rayon*2, (int)rayon*2);
+			g.drawLine((int)x1, ((int)y1, ((int)x2, ((int)y2);
 			return true;
 		}
 		else

@@ -31,7 +31,7 @@ public class ConstructeurGroupe extends ConstructeurCOR
 		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
 		    	{
 		    	        final Node figure = racineNoeuds.item(i);
-		    	        if(COR.resoudre(figure,g) == false)
+		    	        if(COR.resoudre(figure) == false)
 		    	        	new Erreur("Erreur de construction, figure inconnu.");
 		    	}
 		    }

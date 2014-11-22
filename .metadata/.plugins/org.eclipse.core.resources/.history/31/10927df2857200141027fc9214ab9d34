@@ -1,7 +1,5 @@
 package Construction;
 
-import java.awt.Graphics;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -13,7 +11,7 @@ public class ConstructeurPolygone extends ConstructeurCOR
 		
 	}
 
-	public boolean resoudre1(Node s, Graphics g)
+	public boolean resoudre1(Node s) 
 	{
 		if(s.getNodeName().equalsIgnoreCase("polygone"))
 		{
@@ -49,7 +47,6 @@ public class ConstructeurPolygone extends ConstructeurCOR
 					    			y2 = Float.parseFloat(point.item(b).getTextContent());
 					    	}
 		    			}
-		    			g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 		    		}
 		    	}
 		    	else if(list.item(i).getNodeName().equalsIgnoreCase("couleur"))
@@ -57,6 +54,8 @@ public class ConstructeurPolygone extends ConstructeurCOR
 		    		couleur = list.item(i).getTextContent();
 		    	}
 		    }
+			//On dessine sur la fenetre
+			
 			return true;
 		}
 		else

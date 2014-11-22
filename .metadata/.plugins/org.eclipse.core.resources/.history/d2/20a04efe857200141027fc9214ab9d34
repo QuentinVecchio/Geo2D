@@ -77,13 +77,11 @@ public class ControllerConstruction
 		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
 		    	{
 		    	        final Node figure = racineNoeuds.item(i);
-		    	        if(this.COR.resoudre(figure,graphics) == false)
+		    	        if(this.COR.resoudre(figure) == false)
 		    	        	new Erreur("Erreur de construction, figure inconnu.");
 		    	}
 		    }
 		}
-		stratégie.show();
-	    graphics.dispose();
 	}
 	
 	private Document convertStringToDocument(String xmlStr) 
