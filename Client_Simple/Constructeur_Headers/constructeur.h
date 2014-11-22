@@ -1,7 +1,7 @@
 #ifndef CONSTRUCTEUR_H
 #define CONSTRUCTEUR_H
 
-#include "Headers/Figure.h"
+#include "../Headers/Figure.h"
 #include <QtXml>
 
 class Constructeur
