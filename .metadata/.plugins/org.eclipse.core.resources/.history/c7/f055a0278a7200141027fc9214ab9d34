@@ -82,8 +82,10 @@ public class ControllerConstruction
 		    	}
 		    }
 		}
-		stratégie.show();
+		stratégie.show();       // place le tampon sur l'écran : la technique utilisée dépend du type de stratégie utilisé : blitting, pointeur vidéo, etc.
+	    
 	    graphics.dispose();
+
 	}
 	
 	private Document convertStringToDocument(String xmlStr) 

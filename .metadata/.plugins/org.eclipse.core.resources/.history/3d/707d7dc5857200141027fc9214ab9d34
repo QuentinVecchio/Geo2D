@@ -1,7 +1,5 @@
 package Construction;
 
-import java.awt.Graphics;
-
 import org.w3c.dom.Node;
 
 public abstract class ConstructeurCOR extends Constructeur
@@ -13,13 +11,13 @@ public abstract class ConstructeurCOR extends Constructeur
 		suivant = constructeurSuivant;
 	}
 
-	boolean resoudre(Node s, Graphics g) 
+	boolean resoudre(Node s) 
 	{
-		boolean b = this.resoudre1(s,g);
+		boolean b = this.resoudre1(s);
 		if  (b ==  true) 
 			return true;
 		else if  (suivant != null)  	
-			return this.suivant.resoudre(s,g);
+			return this.suivant.resoudre(s);
 		else    
 			return false;
 	}

@@ -82,8 +82,6 @@ public class ControllerConstruction
 		    	}
 		    }
 		}
-		stratégie.show();
-	    graphics.dispose();
 	}
 	
 	private Document convertStringToDocument(String xmlStr) 

@@ -47,7 +47,6 @@ public class ConstructeurCercle extends ConstructeurCOR
 		    	}
 		    }
 			//On dessine sur la fenetre
-			g.drawOval((int)x, (int)y, (int)rayon*2, (int)rayon*2);
 			return true;
 		}
 		else

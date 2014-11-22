@@ -1,5 +1,7 @@
 package Construction;
 
+import java.awt.Graphics;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -11,7 +13,7 @@ public class ConstructeurTriangle extends ConstructeurCOR
 		
 	}
 
-	public boolean resoudre1(Node s) 
+	public boolean resoudre1(Node s, Graphics g)
 	{
 		if(s.getNodeName().equalsIgnoreCase("triangle"))
 		{
@@ -51,7 +53,9 @@ public class ConstructeurTriangle extends ConstructeurCOR
 		    	}
 		    }
 			//On dessine sur la fenetre
-			
+			g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
+			g.drawLine((int)x1, (int)y1, (int)x3, (int)y3);
+			g.drawLine((int)x3, (int)y3, (int)x2, (int)y2);
 			return true;
 		}
 		else
