@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     p->homothetie(p2, 2);
     cout << *p;
     */
-
+    /*
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
         groupe->add(p);
 
     //Sauvegarde de groupe
-        groupe->save("/Users/quentinvecchio/Desktop/test.xml");*/
+        groupe->save("/Users/quentinvecchio/Desktop/test.xml");
         groupe->open("/Users/quentinvecchio/Desktop/test.xml");
 
     //Mise en place du xml pour envoie vers serveur
@@ -133,4 +133,5 @@ int main(int argc, char *argv[])
 
    //Fin de programme
        return a.exec();
+       */
 }
