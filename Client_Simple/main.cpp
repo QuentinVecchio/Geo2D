@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 
     //Création des figures
         Groupe *groupe = new Groupe(Couleur::BLACK);
-        /*Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
+        Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
         Segment *s = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
         Triangle *t = new Triangle(new Point(1,1),new Point(2,2),new Point(3,3),Couleur::BLACK);
         //Création d'un polygone
@@ -133,5 +133,5 @@ int main(int argc, char *argv[])
 
    //Fin de programme
        return a.exec();
-       */
+*/
 }
