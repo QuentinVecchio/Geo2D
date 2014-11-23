@@ -32,7 +32,10 @@ SOURCES += main.cpp\
     Constructeur_Sources/ConstructeurPolygone.cpp \
     Constructeur_Sources/ConstructeurSegment.cpp \
     Constructeur_Sources/ConstructeurTriangle.cpp \
-    Constructeur_Sources/ConstructeurGroupe.cpp
+    Constructeur_Sources/ConstructeurGroupe.cpp \
+    Sources/Carre.cpp \
+    Sources/Rectangle.cpp \
+    Sources/Ellipse.cpp
 
 HEADERS  += \
     network.h \
@@ -51,4 +54,7 @@ HEADERS  += \
     Constructeur_Headers/ConstructeurTriangle.h \
     Constructeur_Headers/ConstructeurCercle.h \
     Constructeur_Headers/ConstructeurPolygone.h \
-    Constructeur_Headers/ConstructeurGroupe.h
+    Constructeur_Headers/ConstructeurGroupe.h \
+    Headers/Carre.h \
+    Headers/Rectangle.h \
+    Headers/Ellipse.h

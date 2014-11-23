@@ -2,19 +2,22 @@
 #include <string>
 #include <QApplication>
 #include <iostream>
+#include "Headers/Carre.h"
 #include "Headers/Cercle.h"
 #include "Headers/Couleur.h"
+#include "Headers/Ellipse.h"
 #include "Headers/Figure.h"
 #include "Headers/Groupe.h"
 #include "Headers/Point.h"
 #include "Headers/Polygone.h"
+#include "Headers/Rectangle.h"
 #include "Headers/Segment.h"
 #include "Headers/Triangle.h"
 #include "Headers/ExceptionGeo2D.h"
 #include <iomanip>
 using namespace std;
 
-int main(int argc, char *argv[])
+int main(int argc, char * argv[])
 {
     /**
       Angles utiles
@@ -27,6 +30,38 @@ int main(int argc, char *argv[])
     /*
     Groupe *g = new Groupe(Couleur::GREEN);
     */
+
+    /**
+      Test carre
+      */
+/*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(1.0,3.0);
+    Point *p3 = new Point(3.0,3.0);
+    Point *p4 = new Point(3.0,1.0);
+    Carre *ca = new Carre(p1, p2, p3, p4, Couleur::RED);
+    cout << *ca;
+    //ca->translation(Point(2.0, 2.0).copy());
+    //ca->rotation(p3, 3.1415926535898);
+    //ca->homothetie(p1, 2);
+    cout << *ca;
+*/
+    /**
+      Test rectangle
+      */
+/*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(1.0,3.0);
+    Point *p3 = new Point(4.0,3.0);
+    Point *p4 = new Point(4.0,1.0);
+    Rectangle *r = new Rectangle(p1, p2, p3, p4, Couleur::RED);
+    cout << *r;
+    //r->translation(Point(2.0, 2.0).copy());
+    //r->rotation(p3, 3.1415926535898);
+    //r->homothetie(p1, 2);
+    cout << r->getAire();
+*/
+
     /**
       Test point
       */
@@ -63,6 +98,19 @@ int main(int argc, char *argv[])
     c->rotation(p1, 6.2831853071796);
     cout << *c;
 */
+
+    /**
+      Test ellipse
+      */
+/*
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Ellipse *e = new Ellipse(p2, p1, 1.0, Couleur::CYAN);
+    cout << *e;
+    e->rotation(p1, 6.2831853071796);
+    cout << *e;
+*/
+
     /**
       Test triangle, homothetie à faire
       */
@@ -90,6 +138,8 @@ int main(int argc, char *argv[])
     p->homothetie(p2, 2);
     cout << *p;
     */
+
+    /*
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -132,4 +182,5 @@ int main(int argc, char *argv[])
 
    //Fin de programme
        return a.exec();
+       */
 }
