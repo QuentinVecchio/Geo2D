@@ -90,7 +90,6 @@ int main(int argc, char *argv[])
     p->homothetie(p2, 2);
     cout << *p;
     */
-    /*
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -102,12 +101,12 @@ int main(int argc, char *argv[])
 
     //Création des figures
         Groupe *groupe = new Groupe(Couleur::BLACK);
-        Cercle *c = new Cercle(new Point(2,3),2.5,Couleur::BLACK);
-        Segment *s = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
-        Triangle *t = new Triangle(new Point(1,1),new Point(2,2),new Point(3,3),Couleur::BLACK);
+        Cercle *c = new Cercle(new Point(200,200),200,Couleur::BLACK);
+        Segment *s = new Segment(new Point(1,1),new Point(200,200),Couleur::BLACK);
+        Triangle *t = new Triangle(new Point(1,1),new Point(150,200),new Point(300,100),Couleur::BLACK);
         //Création d'un polygone
-        Segment *s1 = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
-        Segment *s2 = new Segment(new Point(1,1),new Point(2,2),Couleur::BLACK);
+        Segment *s1 = new Segment(new Point(1,1),new Point(250,250),Couleur::BLACK);
+        Segment *s2 = new Segment(new Point(250,250),new Point(400,400),Couleur::BLACK);
         vector<Segment *> vec;
         vec.push_back(s1);
         vec.push_back(s2);
@@ -129,9 +128,8 @@ int main(int argc, char *argv[])
         cout << e << endl;
 
     //Envoie des données aux serveurs
-       //network->send(xml);
+       network->send(xml);
 
    //Fin de programme
        return a.exec();
-*/
 }

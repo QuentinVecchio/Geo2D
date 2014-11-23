@@ -1,10 +1,12 @@
 package Construction;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.StringReader;
 
+import javax.swing.JFrame;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -24,9 +26,20 @@ public class ControllerConstruction
 	 * Prend en paramètre le string contenant tout le xml
 	 */
 	public ControllerConstruction(String s)
-	{
-			this.s = s.replace("\n", "").replace("\r", "").replace("\t", "").replace("\f", "");
-			this.appelConstructeurs();
+	{	
+		int index = 0;
+		for(int i=0;i<s.length();i++)
+		{
+			if(s.charAt(i) == '<')
+			{
+				index = i;
+				break;
+			}
+		}
+		this.s = s.substring((index));
+		this.s = this.s.trim().replace("\n", "").replace("\r", "").replace("\t", "").replace("\f", "").replace("\0", "");
+		System.out.println(this.s);
+		this.appelConstructeurs();
 	}
 	
 	public void constructionListeConstructeurs()
@@ -46,7 +59,7 @@ public class ControllerConstruction
 		//Création de la fenetre
 		Frame fenetre; 
 		fenetre = new Frame("Dessin");    
-		fenetre.setBounds(30, 60, 400, 400);              
+		fenetre.setBounds(30, 60, 800, 1200);              
 		fenetre.setVisible(true);
 		fenetre.setIgnoreRepaint(true);
 		int numBuffers = 1;
@@ -62,13 +75,12 @@ public class ControllerConstruction
 		}  
 		BufferStrategy strategie = fenetre.getBufferStrategy();
 		Graphics graphics = strategie.getDrawGraphics();        
-
 		constructionListeConstructeurs();
 		//Création du doc xml
 		Document document = convertStringToDocument(this.s);
 		final Element racine = document.getDocumentElement();
 		//Test pour savoir si le fichier est bon ou non
-		if(racine.getNodeName().equalsIgnoreCase("dessins"))
+		if(racine.getNodeName().equalsIgnoreCase("dessin"))
 		{
 		    final NodeList racineNoeuds = racine.getChildNodes();
 		    final int nbRacineNoeuds = racineNoeuds.getLength();
@@ -82,7 +94,7 @@ public class ControllerConstruction
 		    	}
 		    }
 		}
-		stratégie.show();
+		strategie.show();
 	    graphics.dispose();
 	}
 	
