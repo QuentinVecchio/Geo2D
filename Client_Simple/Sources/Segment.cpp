@@ -22,7 +22,9 @@ void Segment::setP2(const Point *p)
 }
 
 float Segment::getLongueur()const{
-    return sqrt(pow(this->p2->getX() - this->getP1()->getX(), 2) + pow(this->p2->getX() - this->getP1()->getX() , 2));
+    int deltaX = this->getP2()->getX()- this->getP1()->getX();
+    int deltaY = this->getP2()->getY()- this->getP1()->getY();
+    return sqrt(deltaX*deltaX + deltaY*deltaY);
 }
 
 void Segment::translation(const Point *p)
