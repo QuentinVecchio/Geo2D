@@ -102,16 +102,8 @@ QDomElement Groupe::toXml(QDomDocument *doc) const
 
 QString Groupe::toStringXml() const
 {
-    QFile *file = new QFile("groupe.xml");
-    QTextStream *out = new QTextStream();
-    out->setDevice(file);
-    if(!file->open(QIODevice::WriteOnly))// Si l'on n'arrive pas à ouvrir le fichier XML.
-    {
-       cout << "Erreur à l'ouverture du document XML, Le document XML n'a pas pu être ouvert. Vérifiez que le nom est le bon et que le document est bien placé" << endl;
-       exit(1);
-    }
     //Création du bloc principal Dessin
-    //QDomElement docElem = dom->documentElement();
+    this->dom->clear();
     QDomElement write_elem = dom->createElement("dessin"); // On crée un QDomElement qui a comme nom de balise "dessin".
     dom->appendChild(write_elem);
     //Création de tous les blocs figure
