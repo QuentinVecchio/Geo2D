@@ -19,13 +19,19 @@ SOURCES += main.cpp\
     Point/pointcontroller.cpp \
     Point/pointview.cpp \
     Point/point.cpp \
-    Abstrait/objetcontroller.cpp
+    Abstrait/objetcontroller.cpp \
+    Segment/segment.cpp \
+    Segment/segmentcontroller.cpp \
+    Segment/segmentview.cpp
 
 HEADERS  += mainwindow.h \
     formulaire.h \
     Point/pointcontroller.h \
     Point/pointview.h \
     Point/point.h \
-    Abstrait/objetcontroller.h
+    Abstrait/objetcontroller.h \
+    Segment/segment.h \
+    Segment/segmentcontroller.h \
+    Segment/segmentview.h
 
 FORMS    += mainwindow.ui

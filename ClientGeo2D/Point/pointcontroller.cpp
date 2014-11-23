@@ -2,12 +2,13 @@
 
 PointController::PointController()
 {
+    this->p = new Point(0,0);
     this->v = new PointView("Point :");
 }
 
 PointController::~PointController()
 {
-    //delete this->point;
+    delete this->p;
     delete this->v;
 }
 
@@ -18,5 +19,6 @@ QLayout* PointController::getView() const
 
 void PointController::construction()
 {
-    //this->p = new Point(this->v->getX1(),this->v->getY1());
+    this->p->setX(this->v->getX1());
+    this->p->setY(this->v->getY1());
 }

@@ -9,7 +9,7 @@
 class PointController : ObjetController
 {
 private:
-    //Point *p;
+    Point *p;
     PointView *v;
 public:
     PointController();

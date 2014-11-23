@@ -96,6 +96,6 @@ void MainWindow::addFormulaire()
     QString s = ui->listeObjets->currentText();
     if(s == "Segment")
     {
-
+        
     }
 }
