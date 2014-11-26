@@ -192,33 +192,27 @@ void Carre::homothetie(const Point *centre, float rapport)
     }
     else{
         if(centre == *this->getP1()){
-            this->p2->setX(this->p2->getX() * rapport);
-            this->p2->setY(this->p2->getY() * rapport);
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
-            this->p4->setX(this->p4->getX() * rapport);
-            this->p4->setY(this->p4->getY() * rapport);
+            this->p2->setY(this->p2->getY() + rapport);
+            this->p3->setX(this->p3->getX() + rapport);
+            this->p3->setY(this->p3->getY() + rapport);
+            this->p4->setX(this->p4->getX() + rapport);
         }
         else if(centre == *this->p2){
-            this->setP1(Point(this->getP1()->getX() * rapport, this->getP1()->getY() * rapport).copy());
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
-            this->p4->setX(this->p4->getX() * rapport);
-            this->p4->setY(this->p4->getY() * rapport);
+            this->setP1(Point(this->getP1()->getX(), this->getP1()->getY() - rapport).copy());
+            this->p3->setX(this->p3->getX() + rapport);
+            this->p4->setX(this->p4->getX() + rapport);
+            this->p4->setY(this->p4->getY() - rapport);
         }
         else if(centre == *this->p3){
-            this->setP1(Point(this->getP1()->getX() * rapport, this->getP1()->getY() * rapport).copy());
-            this->p2->setX(this->p2->getX() * rapport);
-            this->p2->setY(this->p2->getY() * rapport);
-            this->p4->setX(this->p4->getX() * rapport);
-            this->p4->setY(this->p4->getY() * rapport);
+            this->setP1(Point(this->getP1()->getX() - rapport, this->getP1()->getY() - rapport).copy());
+            this->p2->setX(this->p2->getX() - rapport);
+            this->p4->setY(this->p4->getY() - rapport);
         }
         else if(centre == *this->p4){
-            this->setP1(Point(this->getP1()->getX() * rapport, this->getP1()->getY() * rapport).copy());
-            this->p2->setX(this->p2->getX() * rapport);
-            this->p2->setY(this->p2->getY() * rapport);
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
+            this->setP1(Point(this->getP1()->getX() - rapport, this->getP1()->getY()).copy());
+            this->p2->setX(this->p2->getX() - rapport);
+            this->p2->setY(this->p2->getY() + rapport);
+            this->p3->setY(this->p3->getY() + rapport);
         }
     }
 }

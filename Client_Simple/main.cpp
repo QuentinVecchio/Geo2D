@@ -35,17 +35,18 @@ int main(int argc, char * argv[])
       Test carre
       */
 /*
-    Point *p1 = new Point(1.0,1.0);
-    Point *p2 = new Point(1.0,3.0);
-    Point *p3 = new Point(3.0,3.0);
-    Point *p4 = new Point(3.0,1.0);
+    Point *p1 = new Point(1.0,-4.0);
+    Point *p2 = new Point(1.0,-2.0);
+    Point *p3 = new Point(3.0,-2.0);
+    Point *p4 = new Point(3.0,-4.0);
     Carre *ca = new Carre(p1, p2, p3, p4, Couleur::RED);
     cout << *ca;
     //ca->translation(Point(2.0, 2.0).copy());
     //ca->rotation(p3, 3.1415926535898);
-    //ca->homothetie(p1, 2);
+    //ca->homothetie(p4, 2);
     cout << *ca;
 */
+
     /**
       Test rectangle
       */
