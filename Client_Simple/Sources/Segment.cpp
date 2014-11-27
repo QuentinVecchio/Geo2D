@@ -57,7 +57,7 @@ void Segment::rotation(const Point *origine, double angle)
         float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
     }
-    else if(origine == Point(0.0, 0.0)){
+    else{
         float X = this->getP1()->getX() - origine->getX();
         float Y = this->getP1()->getY() - origine->getY();
         float newx = origine->getX() + X * cos(angle) - Y * sin(angle);

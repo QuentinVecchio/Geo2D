@@ -155,7 +155,7 @@ void Carre::rotation(const Point *origine, double angle)
         this->p3->setX(newx3);
         this->p3->setY(newy3);
     }
-    else if(origine == Point(0.0, 0.0)){
+    else{
         float X = this->getP1()->getX() - origine->getX();
         float Y = this->getP1()->getY() - origine->getY();
         float newx = origine->getX() + X * cos(angle) - Y * sin(angle);

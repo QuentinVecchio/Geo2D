@@ -190,7 +190,9 @@ public:
 
 ostream& operator <<(ostream& flux, const Groupe& g){
 	AffObjet aff(flux);
+    cout << "Groupe[ " << endl;
 	for_each(g.v.begin(), g.v.end(), AffObjet(flux));
+    cout << "]" << endl;
 	return flux;
 }
 
