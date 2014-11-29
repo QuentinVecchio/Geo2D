@@ -137,14 +137,16 @@ void Triangle::homothetie(const Point *centre, float rapport)
             this->p3->setY(this->p3->getY() * rapport);
         }
         else if(centre == *this->p2){
-            this->setP1(Point(this->getP1()->getX() * rapport, this->getP1()->getY() * rapport).copy());
+            this->getP1()->setX(this->getP1()->getX() * rapport);
+            this->getP1()->setY(this->getP1()->getY() * rapport);
             this->p3->setX(this->p3->getX() * rapport);
             this->p3->setY(this->p3->getY() * rapport);
         }
         else if(centre == *this->p3){
-            this->setP1(Point(this->getP1()->getX() * rapport, this->getP1()->getY() * rapport).copy());
             this->p2->setX(this->p2->getX() * rapport);
             this->p2->setY(this->p2->getY() * rapport);
+            this->p3->setX(this->p3->getX() * rapport);
+            this->p3->setY(this->p3->getY() * rapport);
         }
     }
 }

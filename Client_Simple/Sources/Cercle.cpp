@@ -49,8 +49,6 @@ void Cercle::homothetie(const Point *centre, float rapport)
         cout << "Le cercle reste invariant avec un rapport de 1" << endl;
     }
     else{
-        this->getP1()->setX(centre->getX() + rapport);
-        this->getP1()->setY(centre->getY() + rapport);
         this->setRayon(this->getRayon() * rapport);
     }
 }
