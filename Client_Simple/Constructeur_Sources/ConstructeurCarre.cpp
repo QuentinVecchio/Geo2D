@@ -10,7 +10,7 @@ Figure* ConstructeurCarre::resoudre1(const QDomNode *d) const
     QDomElement objet = d->toElement();
     if(objet.tagName() == "carre")
     {
-        float x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0, x4 = 0, y = 0;
+        float x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0, x4 = 0, y4 = 0;
         QString couleur = "BLACK";
         QDomNode n = objet.firstChild();
         while(!n.isNull())

@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.StringReader;
 
-import javax.swing.JFrame;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -51,6 +50,9 @@ public class ControllerConstruction
 		COR = new ConstructeurSegment(COR);
 		COR = new ConstructeurTriangle(COR);
 		COR = new ConstructeurPolygone(COR);
+		COR = new ConstructeurCarre(COR);
+		COR = new ConstructeurRectangle(COR);
+		COR = new ConstructeurEllipse(COR);
 		COR = new ConstructeurGroupe(COR);
 	}
 	
@@ -70,7 +72,6 @@ public class ControllerConstruction
 		} 
 		catch (InterruptedException e) 
 		{
-			// TODO Auto-generated catch block
 			new Erreur("Erreur Thread dessiner.");
 		}  
 		BufferStrategy strategie = fenetre.getBufferStrategy();
@@ -84,7 +85,15 @@ public class ControllerConstruction
 		{
 		    final NodeList racineNoeuds = racine.getChildNodes();
 		    final int nbRacineNoeuds = racineNoeuds.getLength();
-		    for (int i = 0; i<nbRacineNoeuds; i++) 
+		    //Récupération de la couleur 
+		    final Node couleur = racineNoeuds.item(0);
+		    if(couleur.getNodeName().equalsIgnoreCase("couleur"))
+		    {
+		    	Couleur c = new Couleur(couleur.getTextContent());
+		    	graphics.setColor(new Color(c.getR(),c.getG(),c.getB()));
+		    }
+		    //Récuperation de toutes les figures
+		    for (int i = 1; i<nbRacineNoeuds; i++) 
 		    {
 		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
 		    	{

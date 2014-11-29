@@ -53,7 +53,6 @@ public class Connexion extends Thread
 			//Création du dessin
 				ControllerConstruction constructeur = new ControllerConstruction(data);
 			//Renvoie de l'image
-			
 			//Fermeture de la socket
 				try 
 				{

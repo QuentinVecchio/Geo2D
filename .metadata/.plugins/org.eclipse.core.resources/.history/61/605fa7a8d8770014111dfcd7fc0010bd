@@ -1,0 +1,65 @@
+package Construction;
+
+public class Couleur {
+	private int r;
+	private int g;
+	private int b;
+	
+	Couleur(String s)
+	{
+		if(s.equalsIgnoreCase("BLACK"))
+		{
+			
+		}
+		else if(s.equalsIgnoreCase("BLACK"))
+		{
+			
+		}
+		else if(s.equalsIgnoreCase("BLACK"))
+		{
+			
+		}
+		else if(s.equalsIgnoreCase("BLACK"))
+		{
+			
+		}
+		else
+		{
+			
+		}
+	}
+	
+	public int getR()
+	{
+		return r;
+	}
+	
+	public int getG()
+	{
+		return g;
+	}
+	
+	public int getB()
+	{
+		return b;
+	}
+	
+	public void setR(int red)
+	{
+		if(red >= 0 && red <= 255)
+			r = red;
+	}
+	
+	public void setG(int green)
+	{
+		if(green >= 0 && green <= 255)
+			g = green;
+	}
+	
+	public void setB(int blue)
+	{
+		if(blue >= 0 && blue <= 255)
+			b = blue;
+	}
+	
+}

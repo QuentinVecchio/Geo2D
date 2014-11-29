@@ -90,7 +90,7 @@ int main(int argc, char * argv[])
       Test cercle
       */
 
-    Point *p1 = new Point(1.0,1.0);
+    /*Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
     Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
     //cout << *c;
@@ -114,7 +114,7 @@ int main(int argc, char * argv[])
       Test triangle, homothetie à faire
       */
 
-    Point *p1b = new Point(1.0,1.0);
+    /*Point *p1b = new Point(1.0,1.0);
     Point *p2b = new Point(2.0,3.0);
     Point *p3 = new Point(3.0, 1.0);
     Triangle *t = new Triangle(p1b, p2b, p3, Couleur::CYAN);
@@ -142,7 +142,7 @@ int main(int argc, char * argv[])
      * Test Groupe
      */
 
-    Groupe *g = new Groupe(Couleur::GREEN);
+    /*Groupe *g = new Groupe(Couleur::GREEN);
     g->add(t);
     g->add(c);
     //cout << *g;
@@ -153,7 +153,7 @@ int main(int argc, char * argv[])
     //cout << *g;
 
 
-    /*
+ */
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -165,26 +165,21 @@ int main(int argc, char * argv[])
 
     //Création des figures
         Groupe *groupe = new Groupe(Couleur::BLACK);
-        Cercle *c = new Cercle(new Point(200,200),200,Couleur::BLACK);
-        Segment *s = new Segment(new Point(1,1),new Point(200,200),Couleur::BLACK);
-        Triangle *t = new Triangle(new Point(1,1),new Point(150,200),new Point(300,100),Couleur::BLACK);
-        //Création d'un polygone
-        Segment *s1 = new Segment(new Point(1,1),new Point(250,250),Couleur::BLACK);
-        Segment *s2 = new Segment(new Point(250,250),new Point(400,400),Couleur::BLACK);
-        vector<Segment *> vec;
-        vec.push_back(s1);
-        vec.push_back(s2);
-        Polygone *p = new Polygone(new Point(1,1),Couleur::BLACK,vec);
-
+        Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::BLACK);
+        Cercle *c2 = new Cercle(new Point(400,600),100,Couleur::BLACK);
+        Rectangle *r = new Rectangle(new Point(300,200),new Point(500,200),new Point(300,700),new Point(500,700),Couleur::BLACK);
+        Cercle *c3 = new Cercle(new Point(300,100),100,Couleur::BLACK);
+        Segment *s = new Segment(new Point(400,100),new Point(400,140),Couleur::BLACK);
     //Ajout dans un objets groupe
-        groupe->add(c);
+        groupe->add(c1);
+        groupe->add(c2);
+        groupe->add(r);
+        groupe->add(c3);
         groupe->add(s);
-        groupe->add(t);
-        groupe->add(p);
 
     //Sauvegarde de groupe
-        groupe->save("/Users/quentinvecchio/Desktop/test.xml");
-        groupe->open("/Users/quentinvecchio/Desktop/test.xml");
+        //groupe->save("/Users/quentinvecchio/Desktop/test.xml");
+        //groupe->open("/Users/quentinvecchio/Desktop/test.xml");
 
     //Mise en place du xml pour envoie vers serveur
         QString xml = groupe->toStringXml();
@@ -196,5 +191,4 @@ int main(int argc, char * argv[])
 
    //Fin de programme
        return a.exec();
-       */
 }

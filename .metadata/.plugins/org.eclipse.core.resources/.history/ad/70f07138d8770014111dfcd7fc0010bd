@@ -1,0 +1,8 @@
+package Construction;
+
+public class Couleur {
+	Couleur(String s)
+	{
+		
+	}
+}

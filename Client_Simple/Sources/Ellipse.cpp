@@ -55,7 +55,7 @@ void Ellipse::translation(const Point *p)
 
 void Ellipse::homothetie(const Point *centre, float rapport)
 {
-    if(rapport == 1){
+    /*if(rapport == 1){
         cout << "Les points restent invariants avec un rapport de 1" << endl;
     }
     else{
@@ -68,11 +68,11 @@ void Ellipse::homothetie(const Point *centre, float rapport)
             this->setP1(Point(this->p2->getX() - rapport, this->p2->getY() - rapport).copy());
             this->setRayon(this->getRayon() * rapport);
         }
-    }
+    }*/
 }
 
 void Ellipse::rotation(const Point * origine, double angle){
-    if (origine == *this->getP1()){
+    /*if (origine == *this->getP1()){
         float X2 = this->p2->getX() - origine->getX();
         float Y2 = this->p2->getY() - origine->getY();
         float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
@@ -100,7 +100,7 @@ void Ellipse::rotation(const Point * origine, double angle){
         float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
         this->p2->setX(newx2);
         this->p2->setY(newy2);
-    }
+    }*/
 }
 
 QDomElement Ellipse::toXml(QDomDocument * dom) const
