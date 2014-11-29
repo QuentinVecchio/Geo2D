@@ -11,6 +11,9 @@
 #include "../Constructeur_Headers/ConstructeurSegment.h"
 #include "../Constructeur_Headers/ConstructeurTriangle.h"
 #include "../Constructeur_Headers/ConstructeurPolygone.h"
+#include "../Constructeur_Headers/ConstructeurCarre.h"
+#include "../Constructeur_Headers/ConstructeurRectangle.h"
+#include "../Constructeur_Headers/ConstructeurEllipse.h"
 #include "../Constructeur_Headers/ConstructeurGroupe.h"
 
 class Groupe : public Figure

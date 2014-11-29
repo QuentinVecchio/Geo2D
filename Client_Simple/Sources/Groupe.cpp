@@ -88,15 +88,16 @@ QDomElement Groupe::toXml(QDomDocument *doc) const
 {
     //Création de la balise groupe
     QDomElement nom = doc->createElement("groupe");
-    for(int i=0;i<this->nbElements();i++)
-    {
-        nom.appendChild(this->v[i]->toXml(dom));
-    }
     //Création de la balise couleur
     QDomElement couleur = dom->createElement("couleur");
     QDomText c = dom->createTextNode(Couleur::getCouleur(this->getC()));
     couleur.appendChild(c);
     nom.appendChild(couleur);
+    //Ajout des figures
+    for(int i=0;i<this->nbElements();i++)
+    {
+        nom.appendChild(this->v[i]->toXml(dom));
+    }
     return nom;
 }
 
@@ -106,6 +107,11 @@ QString Groupe::toStringXml() const
     this->dom->clear();
     QDomElement write_elem = dom->createElement("dessin"); // On crée un QDomElement qui a comme nom de balise "dessin".
     dom->appendChild(write_elem);
+    //Création de la balise couleur
+    QDomElement couleur = dom->createElement("couleur");
+    QDomText c = dom->createTextNode(Couleur::getCouleur(this->getC()));
+    couleur.appendChild(c);
+    write_elem.appendChild(couleur);
     //Création de tous les blocs figure
     for(int i=0;i<this->nbElements();i++)
     {
@@ -135,6 +141,9 @@ void Groupe::open(QString s)
         COR = new ConstructeurSegment(COR);
         COR = new ConstructeurPolygone(COR);
         COR = new ConstructeurTriangle(COR);
+        COR = new ConstructeurCarre(COR);
+        COR = new ConstructeurRectangle(COR);
+        COR = new ConstructeurEllipse(COR);
         COR = new ConstructeurGroupe(COR);
 
         //Initialisation XML

@@ -22,7 +22,7 @@ protected:
     Figure(const Point *p1, const Couleur::Couleurs c);
 
 public:
-    ~Figure(){}
+    virtual ~Figure(){}
 
     virtual void translation(const Point *p) = 0;
     virtual void homothetie(const Point *p , float rapport) = 0;

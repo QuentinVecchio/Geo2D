@@ -24,8 +24,8 @@ Ellipse::~Ellipse()
 
 }
 
-float *Ellipse::getHauteur()const{
-    return this->h;
+float Ellipse::getHauteur()const{
+    return this->hauteur;
 }
 
 void Ellipse::setHauteur(const float h){
@@ -116,7 +116,6 @@ QDomElement Ellipse::toXml(QDomDocument * dom) const
     nom.appendChild(rayon);
     //Création de la balise hauteur
     QDomElement hauteur = dom->createElement("hauteur");
-    QString a;
     a.setNum(this->getHauteur());
     QDomText h = dom->createTextNode(a);
     hauteur.appendChild(h);
