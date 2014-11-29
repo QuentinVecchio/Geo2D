@@ -89,14 +89,19 @@ int main(int argc, char * argv[])
     /**
       Test cercle
       */
+<<<<<<< local
+/*
+    Point *p1 = new Point(1.0,1.0);
+=======
 
     /*Point *p1 = new Point(1.0,1.0);
+>>>>>>> other
     Point *p2 = new Point(2.0,2.0);
     Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
     //cout << *c;
     //c->rotation(p1, 6.2831853071796);
     //cout << *c;
-
+*/
 
     /**
       Test ellipse
@@ -104,17 +109,22 @@ int main(int argc, char * argv[])
 /*
     Point *p1c = new Point(1.0,1.0);
     Point *p2c = new Point(2.0,2.0);
-    Ellipse *e = new Ellipse(p2c,1.0, 2.0, Couleur::CYAN);
+    Ellipse *e = new Ellipse(p2c, 1.0, 2.0, Couleur::CYAN);
     cout << *e;
-    e->homothetie(p2c, 2);
+    e->homothetie(p2c, 1);
     cout << *e;
 */
 
     /**
       Test triangle, homothetie à faire
       */
+<<<<<<< local
+/*
+    Point *p1b = new Point(1.0,1.0);
+=======
 
     /*Point *p1b = new Point(1.0,1.0);
+>>>>>>> other
     Point *p2b = new Point(2.0,3.0);
     Point *p3 = new Point(3.0, 1.0);
     Triangle *t = new Triangle(p1b, p2b, p3, Couleur::CYAN);
@@ -141,8 +151,13 @@ int main(int argc, char * argv[])
     /**
      * Test Groupe
      */
+<<<<<<< local
+/*
+    Groupe *g = new Groupe(Couleur::GREEN);
+=======
 
     /*Groupe *g = new Groupe(Couleur::GREEN);
+>>>>>>> other
     g->add(t);
     g->add(c);
     //cout << *g;
@@ -151,10 +166,9 @@ int main(int argc, char * argv[])
     cout << *g2;
     //g->rotation(Point(0.0, 0.0).copy(), 3.1415926535898);
     //cout << *g;
-
+*/
 
  */
-    /*
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -192,5 +206,4 @@ int main(int argc, char * argv[])
 
    //Fin de programme
        return a.exec();
-       */
 }
