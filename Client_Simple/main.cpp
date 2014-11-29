@@ -90,9 +90,9 @@ int main(int argc, char * argv[])
       Test cercle
       */
 
-    //Point *p1 = new Point(1.0,1.0);
-    //Point *p2 = new Point(2.0,2.0);
-    //Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
+    Point *p1 = new Point(1.0,1.0);
+    Point *p2 = new Point(2.0,2.0);
+    Cercle *c = new Cercle(p2, 1.0, Couleur::BLACK);
     //cout << *c;
     //c->rotation(p1, 6.2831853071796);
     //cout << *c;
@@ -114,10 +114,10 @@ int main(int argc, char * argv[])
       Test triangle, homothetie à faire
       */
 
-    //Point *p1 = new Point(1.0,1.0);
-   // Point *p2 = new Point(2.0,3.0);
-   // Point *p3 = new Point(3.0, 1.0);
-    //Triangle *t = new Triangle(p1, p2, p3, Couleur::CYAN);
+    Point *p1b = new Point(1.0,1.0);
+    Point *p2b = new Point(2.0,3.0);
+    Point *p3 = new Point(3.0, 1.0);
+    Triangle *t = new Triangle(p1b, p2b, p3, Couleur::CYAN);
     //cout << *t;
     //t->rotation(p1, 3.1415926535898);
     //cout << *t;
@@ -141,14 +141,17 @@ int main(int argc, char * argv[])
     /**
      * Test Groupe
      */
-    /*
+
     Groupe *g = new Groupe(Couleur::GREEN);
     g->add(t);
     g->add(c);
-    cout << *g;
-    g->rotation(Point(0.0, 0.0).copy(), 3.1415926535898);
-    cout << *g;
-    */
+    //cout << *g;
+    Groupe *g2 = new Groupe(Couleur::BLUE);
+    g2->add(g);
+    cout << *g2;
+    //g->rotation(Point(0.0, 0.0).copy(), 3.1415926535898);
+    //cout << *g;
+
 
     /*
     //Main pour Quentin

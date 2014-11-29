@@ -37,6 +37,7 @@ public:
     void homothetie(const Point *centre, float rapport);
 
     Groupe* copy() const;
+    void afficher(ostream& flux) const;
     QDomElement toXml(QDomDocument *) const;
     QString toStringXml() const;
     void open(QString);

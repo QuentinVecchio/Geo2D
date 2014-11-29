@@ -177,23 +177,17 @@ void Groupe::save(QString s) const
     f->close();
 }
 
-class AffObjet{
-private:
-	ostream& flux;
-public:
-    AffObjet(ostream& flux) :flux(flux){}
-	void operator () (Figure* f){
-		flux << *f << endl;
-	}
-
-};
+void Groupe::afficher(ostream &flux) const{
+    flux << "Groupe[ " << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        this->v[i]->afficher(flux);
+    }
+    flux << "]" << endl;
+}
 
 ostream& operator <<(ostream& flux, const Groupe& g){
-	AffObjet aff(flux);
-    cout << "Groupe[ " << endl;
-	for_each(g.v.begin(), g.v.end(), AffObjet(flux));
-    cout << "]" << endl;
-	return flux;
+    g.afficher(flux);
+    return flux;
 }
 
 Groupe::~Groupe(){
