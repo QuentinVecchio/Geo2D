@@ -59,8 +59,6 @@ void Ellipse::homothetie(const Point *centre, float rapport)
         cout << "Les points restent invariants avec un rapport de 1" << endl;
     }
     else{
-        this->getP1()->setX(centre->getX() + rapport);
-        this->getP1()->setY(centre->getY() + rapport);
         this->setRayon(this->getRayon() * rapport);
         this->setHauteur(this->getHauteur() * rapport);
     }
