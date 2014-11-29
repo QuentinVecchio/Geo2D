@@ -35,7 +35,10 @@ SOURCES += main.cpp\
     Constructeur_Sources/ConstructeurGroupe.cpp \
     Sources/Carre.cpp \
     Sources/Rectangle.cpp \
-    Sources/Ellipse.cpp
+    Sources/Ellipse.cpp \
+    Constructeur_Sources/ConstructeurRectangle.cpp \
+    Constructeur_Sources/ConstructeurEllipse.cpp \
+    Constructeur_Sources/ConstructeurCarre.cpp
 
 HEADERS  += \
     network.h \
@@ -57,4 +60,7 @@ HEADERS  += \
     Constructeur_Headers/ConstructeurGroupe.h \
     Headers/Carre.h \
     Headers/Rectangle.h \
-    Headers/Ellipse.h
+    Headers/Ellipse.h \
+    Constructeur_Headers/ConstructeurRectangle.h \
+    Constructeur_Headers/ConstructeurEllipse.h \
+    Constructeur_Headers/ConstructeurCarre.h

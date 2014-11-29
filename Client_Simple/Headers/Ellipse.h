@@ -12,7 +12,7 @@ public:
     Ellipse(const Ellipse& e);
     ~Ellipse();
 
-    Point *getHauteur() const;
+    float getHauteur() const;
     void setHauteur(const float h);
 
     float getAire()const;
