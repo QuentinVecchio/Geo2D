@@ -64,14 +64,13 @@ int main(int argc, char * argv[])
     /**
       Test point
       */
-    /*
+/*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
-    Point *p3 = new Point(3.0,1.0);
-    cout << *p2;
-    p2->rotation(p1, 6.2831853071796);
-    cout << *p2;
-    */
+    cout << *p1;
+    p1->homothetie(p2, 2);
+    cout << *p1;
+*/
 
     /**
       Test segment
@@ -119,7 +118,7 @@ int main(int argc, char * argv[])
     Point *p3 = new Point(3.0, 1.0);
     Triangle *t = new Triangle(p1b, p2b, p3, Couleur::CYAN);
     cout << *t;
-    t->homothetie(p1b, 2);
+    t->homothetie(Point(0.0, 0.0).copy(), 2);
     cout << *t;
 */
     /**

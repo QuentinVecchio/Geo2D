@@ -130,23 +130,13 @@ void Triangle::homothetie(const Point *centre, float rapport)
         cout << "Les points restent invariants avec un rapport de 1" << endl;
     }
     else{
-        if(centre == *this->getP1()){
-            this->p2->setX(this->p2->getX() * rapport);
-            this->p2->setY(this->p2->getY() * rapport);
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
-        }
-        else if(centre == *this->p2){
+        if(centre == Point(0.0, 0.0)){
             this->getP1()->setX(this->getP1()->getX() * rapport);
             this->getP1()->setY(this->getP1()->getY() * rapport);
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
-        }
-        else if(centre == *this->p3){
-            this->p2->setX(this->p2->getX() * rapport);
-            this->p2->setY(this->p2->getY() * rapport);
-            this->p3->setX(this->p3->getX() * rapport);
-            this->p3->setY(this->p3->getY() * rapport);
+            this->getP2()->setX(this->getP2()->getX() * rapport);
+            this->getP2()->setY(this->getP2()->getY() * rapport);
+            this->getP3()->setX(this->getP3()->getX() * rapport);
+            this->getP3()->setY(this->getP3()->getY() * rapport);
         }
     }
 }
