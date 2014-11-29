@@ -5,14 +5,15 @@
 
 class Ellipse : public Cercle{
 private:
-    Point *p2;
+    //rayon devient largeur
+    float hauteur;
 public:
-    Ellipse(const Point *p, const Point *p2, const float r, const Couleur::Couleurs c);
+    Ellipse(const Point *p, const float r, const float h,const Couleur::Couleurs c);
     Ellipse(const Ellipse& e);
     ~Ellipse();
 
-    Point *getP2() const;
-    void setP2(const Point *p);
+    Point *getHauteur() const;
+    void setHauteur(const float h);
 
     float getAire()const;
 
