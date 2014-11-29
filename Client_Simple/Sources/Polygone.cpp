@@ -88,24 +88,17 @@ QDomElement Polygone::toXml(QDomDocument * dom) const
     return nom;
 }
 
-class AffObjet
-{
-private:
-	ostream& flux;
-public:
-    AffObjet(ostream& flux) :flux(flux){}
-	void operator () (Segment* s){
-        flux <<  *s << endl;
-	}
-
-};
+void Polygone::afficher(ostream &flux) const{
+    flux << "Polygone[ " << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        this->v[i]->afficher(flux);
+    }
+    flux << "]" << endl;
+}
 
 ostream& operator <<(ostream& flux, const Polygone& p)
 {
-	AffObjet aff(flux);
-    cout << "Polygone[ " << endl;
-    for_each(p.v.begin(), p.v.end(), AffObjet(flux));
-    cout << "]" << endl;
+    p.afficher(flux);
 	return flux;
 }
 

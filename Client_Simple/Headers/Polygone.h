@@ -26,6 +26,7 @@ public:
     void rotation(const Point *origine, double angle);
     void homothetie(const Point *centre, float rapport);
 
+    void afficher(ostream &flux) const;
     Polygone* copy() const;
     QDomElement toXml(QDomDocument *) const;
 	friend ostream& operator <<(ostream& flux, const Polygone& p);
