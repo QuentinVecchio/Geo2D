@@ -67,6 +67,10 @@ void Point::homothetie(const Point *centre, float rapport){
     if(rapport == 1){
         cout << "Le point reste invariant avec un rapport de 1" << endl;
     }
+    else if(centre == Point(0.0, 0.0)){
+        this->setX(this->getX() * rapport);
+        this->setY(this->getY() * rapport);
+    }
     else{
         this->setX(centre->getX() + rapport);
         this->setY(centre->getY() + rapport);

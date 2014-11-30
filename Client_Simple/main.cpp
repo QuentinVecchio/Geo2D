@@ -64,14 +64,13 @@ int main(int argc, char * argv[])
     /**
       Test point
       */
-    /*
+/*
     Point *p1 = new Point(1.0,1.0);
     Point *p2 = new Point(2.0,2.0);
-    Point *p3 = new Point(3.0,1.0);
-    cout << *p2;
-    p2->rotation(p1, 6.2831853071796);
-    cout << *p2;
-    */
+    cout << *p1;
+    p1->homothetie(p2, 2);
+    cout << *p1;
+*/
 
     /**
       Test segment
@@ -102,26 +101,26 @@ int main(int argc, char * argv[])
       Test ellipse
       */
 /*
-    Point *p1 = new Point(1.0,1.0);
-    Point *p2 = new Point(2.0,2.0);
-    Ellipse *e = new Ellipse(p2, p1, 1.0, Couleur::CYAN);
+    Point *p1c = new Point(1.0,1.0);
+    Point *p2c = new Point(2.0,2.0);
+    Ellipse *e = new Ellipse(p2c,1.0, 2.0, Couleur::CYAN);
     cout << *e;
-    e->rotation(p1, 6.2831853071796);
+    e->homothetie(p2c, 2);
     cout << *e;
 */
 
     /**
       Test triangle, homothetie à faire
       */
-
-    /*Point *p1b = new Point(1.0,1.0);
+/*
+    Point *p1b = new Point(1.0,1.0);
     Point *p2b = new Point(2.0,3.0);
     Point *p3 = new Point(3.0, 1.0);
     Triangle *t = new Triangle(p1b, p2b, p3, Couleur::CYAN);
-    //cout << *t;
-    //t->rotation(p1, 3.1415926535898);
-    //cout << *t;
-
+    cout << *t;
+    t->homothetie(Point(0.0, 0.0).copy(), 2);
+    cout << *t;
+*/
     /**
       Test polygone, homothetie à revoir
       */
@@ -154,6 +153,7 @@ int main(int argc, char * argv[])
 
 
  */
+/*
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -161,7 +161,7 @@ int main(int argc, char * argv[])
         cout << "Programme développé par Koby Dylan et Vecchio Quentin, élèves de L3" << endl;
 
     //initialisation de la partie réseau du client
-        Network *network = new Network("127.0.0.1","2107");
+        Network *network = new Network("192.168.1.11","2107");
 
     //Création des figures
         Groupe *groupe = new Groupe(Couleur::BLACK);
@@ -191,4 +191,5 @@ int main(int argc, char * argv[])
 
    //Fin de programme
        return a.exec();
+*/
 }
