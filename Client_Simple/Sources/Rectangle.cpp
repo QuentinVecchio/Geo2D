@@ -215,6 +215,16 @@ void Rectangle::homothetie(const Point *centre, float rapport)
             this->p2->setY(this->p2->getY() + rapport);
             this->p3->setY(this->p3->getY() + rapport);
         }
+        else if(centre == Point(0.0, 0.0)){
+            this->getP1()->setX(this->getP1()->getX() * rapport);
+            this->getP1()->setY(this->getP1()->getY() * rapport);
+            this->getP2()->setX(this->getP2()->getX() * rapport);
+            this->getP2()->setY(this->getP2()->getY() * rapport);
+            this->getP3()->setX(this->getP3()->getX() * rapport);
+            this->getP3()->setY(this->getP3()->getY() * rapport);
+            this->getP4()->setX(this->getP4()->getX() * rapport);
+            this->getP4()->setY(this->getP4()->getY() * rapport);
+        }
     }
 }
 

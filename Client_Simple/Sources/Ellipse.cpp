@@ -55,52 +55,21 @@ void Ellipse::translation(const Point *p)
 
 void Ellipse::homothetie(const Point *centre, float rapport)
 {
-    /*if(rapport == 1){
+    if(rapport == 1){
         cout << "Les points restent invariants avec un rapport de 1" << endl;
     }
     else{
-        if(centre == *this->getP1()){
-            this->p2->setX(this->getP1()->getX() + rapport);
-            this->p2->setY(this->getP1()->getY() + rapport);
-            this->setRayon(this->getRayon() * rapport);
-        }
-        else if(centre == *this->p2){
-            this->setP1(Point(this->p2->getX() - rapport, this->p2->getY() - rapport).copy());
-            this->setRayon(this->getRayon() * rapport);
-        }
-    }*/
+        this->setRayon(this->getRayon() * rapport);
+        this->setHauteur(this->getHauteur() * rapport);
+    }
 }
 
 void Ellipse::rotation(const Point * origine, double angle){
-    /*if (origine == *this->getP1()){
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
-    }
-    else if (origine == *this->p2){
         float X = this->getP1()->getX() - origine->getX();
         float Y = this->getP1()->getY() - origine->getY();
         float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
         float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
-    }
-    else if(origine == Point(0.0, 0.0)){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
-        this->setP1(Point(newx, newy).copy());
-
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
-    }*/
 }
 
 QDomElement Ellipse::toXml(QDomDocument * dom) const

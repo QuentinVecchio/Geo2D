@@ -86,6 +86,12 @@ void Segment::homothetie(const Point *centre, float rapport)
         else if(centre == *this->p2){
             this->setP1(Point(this->p2->getX() - rapport, this->p2->getY() - rapport).copy());
         }
+        else if(centre == Point(0.0, 0.0)){
+            this->getP1()->setX(this->getP1()->getX() * rapport);
+            this->getP1()->setY(this->getP1()->getY() * rapport);
+            this->getP2()->setX(this->getP2()->getX() * rapport);
+            this->getP2()->setY(this->getP2()->getY() * rapport);
+        }
     }
 }
 
