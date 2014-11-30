@@ -1,0 +1,34 @@
+package Construction;
+
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class ConstructeurCercle extends ConstructeurCOR
+{
+
+	ConstructeurCercle(ConstructeurCOR constructeurSuivant) {
+		super(constructeurSuivant);
+		
+	}
+
+	public boolean resoudre1(Node s) 
+	{
+		if(s.getNodeName().equalsIgnoreCase("cercle"))
+		{
+			NodeList list = s.getChildNodes();
+			for (int i = 0; i<nbRacineNoeuds; i++) 
+		    {
+		    	if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) 
+		    	{
+		    	        final Node figure = racineNoeuds.item(i);
+		    	        this.COR.resoudre(figure);
+		    	}
+		    }
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}

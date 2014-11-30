@@ -1,0 +1,46 @@
+package Construction;
+
+public class Couleur {
+	private int r;
+	private int g;
+	private int b;
+	
+	Couleur(String s)
+	{
+		
+	}
+	
+	public int getR()
+	{
+		return r;
+	}
+	
+	public int getG()
+	{
+		return g;
+	}
+	
+	public int getB()
+	{
+		return b;
+	}
+	
+	public void setR(int red)
+	{
+		if(red >= 0 && red <= 255)
+			r = red;
+	}
+	
+	public int getG()
+	{
+		if(red >= 0 && red <= 255)
+			g = red;
+	}
+	
+	public int getB()
+	{
+		if(red >= 0 && red <= 255)
+			b = red;
+	}
+	
+}
