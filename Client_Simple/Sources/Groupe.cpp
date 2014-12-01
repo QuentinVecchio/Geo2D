@@ -1,18 +1,17 @@
 #include "../Headers/Groupe.h"
 #include <algorithm>
 
-Groupe::Groupe(const Couleur::Couleurs c){
-    this->c = c;
+Groupe::Groupe(const Couleur::Couleurs c) : Figure(new Point(0,0),c)
+{
     this->dom = new QDomDocument();
 }
 
-Groupe::Groupe(const vector<Figure*> groupe, const Couleur::Couleurs c)
+Groupe::Groupe(const vector<Figure*> groupe, const Couleur::Couleurs c) : Figure(new Point(0,0),c)
 {
-    this->c = c;
     this->v = groupe;
 }
 
-Groupe::Groupe(const Groupe& g)
+Groupe::Groupe(const Groupe& g) : Figure(new Point(0,0),g.getC())
 {
     this->v = g.getV();
 }
@@ -20,7 +19,7 @@ Groupe::Groupe(const Groupe& g)
 void Groupe::add(Figure *f)
 {
     // on applique la couleur du groupe à toutes ses pièces
-    f->setC(this->c);
+    f->setC(this->getC());
     this->v.push_back(f);
 }
 
@@ -153,17 +152,24 @@ void Groupe::open(QString s)
         {
             while(!noeud->isNull())
             {
-                //On envoie le noeud à l'expert
-                Figure *f = COR->resoudre(noeud);
-                if(f == NULL)
+                if(noeud->toElement().tagName() == "couleur")
                 {
-                    cout << "Erreur figure inconnu, fichier corrompu." << endl;
-                    return;
+                    this->setC(Couleur::getNameCouleur(noeud->toText().data()));
                 }
                 else
                 {
-                    this->add(f);
-                    *noeud = noeud->nextSibling();//On passe à l'objet suivant
+                    //On envoie le noeud à l'expert
+                    Figure *f = COR->resoudre(noeud);
+                    if(f == NULL)
+                    {
+                        cout << "Erreur figure inconnu, fichier corrompu." << endl;
+                        return;
+                    }
+                    else
+                    {
+                        this->add(f);
+                        *noeud = noeud->nextSibling();//On passe à l'objet suivant
+                    }
                 }
             }
         }

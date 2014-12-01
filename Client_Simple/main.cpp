@@ -153,7 +153,7 @@ int main(int argc, char * argv[])
 
 
  */
-/*
+
     //Main pour Quentin
     QApplication a(argc, argv);
     //Début de programme
@@ -161,11 +161,14 @@ int main(int argc, char * argv[])
         cout << "Programme développé par Koby Dylan et Vecchio Quentin, élèves de L3" << endl;
 
     //initialisation de la partie réseau du client
-        Network *network = new Network("192.168.1.11","2107");
+        Network *network = new Network("127.0.0.1","2107");
 
     //Création des figures
-        Groupe *groupe = new Groupe(Couleur::BLACK);
-        Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::BLACK);
+        Groupe *groupe = new Groupe(Couleur::CYAN);
+        Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::CYAN);
+        string c = Couleur::getCouleur(c1->getC()).toStdString();
+        cout << c << endl;
+        //Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::BLACK);
         Cercle *c2 = new Cercle(new Point(400,600),100,Couleur::BLACK);
         Rectangle *r = new Rectangle(new Point(300,200),new Point(500,200),new Point(300,700),new Point(500,700),Couleur::BLACK);
         Cercle *c3 = new Cercle(new Point(300,100),100,Couleur::BLACK);
@@ -191,5 +194,4 @@ int main(int argc, char * argv[])
 
    //Fin de programme
        return a.exec();
-*/
 }
