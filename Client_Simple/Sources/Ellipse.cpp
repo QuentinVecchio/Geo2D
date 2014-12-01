@@ -44,7 +44,7 @@ void Ellipse::setHauteur(const float h){
 float Ellipse::getAire()const{
     float aire;
     float PI = 4.0 * atan(1.0);
-    aire = pow(this->getRayon(), 2) * PI;
+    aire = this->getHauteur() * this->getRayon() * PI;
     return aire;
 }
 
