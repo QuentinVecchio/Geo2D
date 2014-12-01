@@ -19,7 +19,6 @@
 class Groupe : public Figure
 {
 private:
-    Couleur::Couleurs c;
     vector<Figure*> v;
     QDomDocument *dom;
 public:
