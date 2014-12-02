@@ -132,11 +132,11 @@ int main(int argc, char * argv[])
     Segment *s2 = new Segment(p2, p3, Couleur::RED);
     Polygone *p = new Polygone(p3, Couleur::BLUE);
     p->add(s1); p->add(s2);
-    cout << *p;
-    p->rotation(Point(0.0,0.0).copy(), 3.1415926535898);
-    cout << *p;
+    cout << *p << endl;
+    cout << p->getAire() << endl;
+    //p->rotation(Point(0.0,0.0).copy(), 3.1415926535898);
+    //cout << *p;
 */
-
     /**
      * Test Groupe
      */
@@ -163,11 +163,10 @@ int main(int argc, char * argv[])
     //initialisation de la partie réseau du client
         Network *network = new Network("127.0.0.1","2107");
     //Création des figures
-        Groupe *groupe = new Groupe(Couleur::BLACK);
+        Groupe *groupe = new Groupe(Couleur::RED);
         Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::CYAN);
         string c = Couleur::getCouleur(c1->getC()).toStdString();
         cout << c << endl;
-        //Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::BLACK);
         Cercle *c2 = new Cercle(new Point(400,600),100,Couleur::BLACK);
         Rectangle *r = new Rectangle(new Point(300,200),new Point(500,200),new Point(300,700),new Point(500,700),Couleur::BLACK);
         Cercle *c3 = new Cercle(new Point(300,100),100,Couleur::BLACK);
@@ -178,10 +177,13 @@ int main(int argc, char * argv[])
         groupe->add(r);
         groupe->add(c3);
         groupe->add(s);
+        //cout << *groupe << endl;
+        //groupe->rotation(r->getMilieu(), 1.5707963267949);
+        //cout << *groupe << endl;
 
     //Sauvegarde de groupe
-        //groupe->save("/Users/quentinvecchio/Desktop/test.xml");
-        //groupe2->open("/Users/quentinvecchio/Desktop/test.xml");
+        //groupe->save("test.xml");
+        //groupe->open("test.xml");
 
     //Mise en place du xml pour envoie vers serveur
         QString xml1 = groupe->toStringXml();
@@ -192,4 +194,5 @@ int main(int argc, char * argv[])
    //Fin de programme
        network->close();
        return a.exec();
+
 }

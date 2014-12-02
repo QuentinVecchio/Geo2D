@@ -54,11 +54,20 @@ void Cercle::homothetie(const Point *centre, float rapport)
 }
 
 void Cercle::rotation(const Point * origine, double angle){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
-        this->setP1(Point(newx, newy).copy());
+        if(origine == Point(0.0, 0.0)){
+            double X = this->getP1()->getX() - origine->getX();
+            double Y = this->getP1()->getY() - origine->getY();
+            double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+            double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+            this->getP1()->setX(newx);
+            this->getP1()->setY(newy);
+        }
+        else{
+            double newx = (this->getP1()->getX() - origine->getX()) * cos(angle) - (this->getP1()->getY() - origine->getY()) * sin(angle) + origine->getX();
+            double newy = (this->getP1()->getY() - origine->getY()) * cos(angle) + (this->getP1()->getX() - origine->getX()) * sin(angle) + origine->getY();
+            this->getP1()->setX(newx);
+            this->getP1()->setY(newy);
+        }
 }
 
 QDomElement Cercle::toXml(QDomDocument * dom) const
