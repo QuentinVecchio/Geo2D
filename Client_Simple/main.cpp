@@ -162,9 +162,8 @@ int main(int argc, char * argv[])
 
     //initialisation de la partie réseau du client
         Network *network = new Network("127.0.0.1","2107");
-
     //Création des figures
-        Groupe *groupe = new Groupe(Couleur::CYAN);
+        Groupe *groupe = new Groupe(Couleur::BLACK);
         Cercle *c1 = new Cercle(new Point(200,600),100,Couleur::CYAN);
         string c = Couleur::getCouleur(c1->getC()).toStdString();
         cout << c << endl;
@@ -182,16 +181,15 @@ int main(int argc, char * argv[])
 
     //Sauvegarde de groupe
         //groupe->save("/Users/quentinvecchio/Desktop/test.xml");
-        //groupe->open("/Users/quentinvecchio/Desktop/test.xml");
+        //groupe2->open("/Users/quentinvecchio/Desktop/test.xml");
 
     //Mise en place du xml pour envoie vers serveur
-        QString xml = groupe->toStringXml();
-        string e = xml.toStdString();
-        cout << e << endl;
+        QString xml1 = groupe->toStringXml();
 
     //Envoie des données aux serveurs
-       network->send(xml);
+       network->send(xml1);
 
    //Fin de programme
+       network->close();
        return a.exec();
 }

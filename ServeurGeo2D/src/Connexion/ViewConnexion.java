@@ -21,7 +21,6 @@ public class ViewConnexion extends JPanel
 	
 	public void refresh()
 	{
-		System.out.println("refresh");
 		for(int i=0;i<this.connexions.size();i++)
 		{
 			Connexion c = (Connexion) connexions.get(i);

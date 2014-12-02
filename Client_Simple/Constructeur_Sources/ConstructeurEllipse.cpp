@@ -10,6 +10,7 @@ Figure* ConstructeurEllipse::resoudre1(const QDomNode *d) const
     QDomElement objet = d->toElement();
     if(objet.tagName() == "ellipse")
     {
+        QDomElement elt;
         float x = 0, y = 0, rayon = 0, hauteur = 0;
         QString couleur = "BLACK";
         QDomNode n = objet.firstChild();
@@ -20,13 +21,14 @@ Figure* ConstructeurEllipse::resoudre1(const QDomNode *d) const
                 QDomNode p = n.toElement().firstChild();
                 while(!p.isNull())
                 {
+                    elt = p.toElement();
                     if(p.toElement().tagName() == "X")
                     {
-                        x = n.toElement().toText().data().toFloat();
+                        x = elt.text().toFloat();
                     }
                     else if(p.toElement().tagName() == "Y")
                     {
-                        y = n.toElement().toText().data().toFloat();
+                        y = elt.text().toFloat();
                     }
                     p = p.nextSibling();
                }
@@ -41,7 +43,8 @@ Figure* ConstructeurEllipse::resoudre1(const QDomNode *d) const
             }
             else if(n.toElement().tagName() == "couleur")
             {
-                couleur = n.toElement().toText().data();
+                elt = n.toElement();
+                couleur = elt.text();
             }
             n = n.nextSibling();
         }

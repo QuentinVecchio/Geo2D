@@ -10,6 +10,7 @@ Figure * ConstructeurSegment::resoudre1(const QDomNode *d) const
     QDomElement objet = d->toElement();
     if(objet.tagName() == "segment")
     {
+        QDomElement elt;
         float x1 = 0, y1 = 0, x2 = 0, y2 = 0;
         QString couleur = "BLACK";
         QDomNode n = objet.firstChild();
@@ -20,27 +21,29 @@ Figure * ConstructeurSegment::resoudre1(const QDomNode *d) const
                 QDomNode p = n.toElement().firstChild();
                 while(!p.isNull())
                 {
+                    elt = p.toElement();
                     if(p.toElement().tagName() == "X")
                     {
                         if(x1 == 0)
-                            x1 = n.toElement().toText().data().toFloat();
+                            x1 = elt.text().toFloat();
                         else
-                            x2 = n.toElement().toText().data().toFloat();
+                            x2 = elt.text().toFloat();
 
                     }
                     else if(p.toElement().tagName() == "Y")
                     {
                         if(y1 == 0)
-                            y1 = n.toElement().toText().data().toFloat();
+                            y1 = elt.text().toFloat();
                         else
-                            y2 = n.toElement().toText().data().toFloat();
+                            y2 = elt.text().toFloat();
                     }
                     p = p.nextSibling();
                 }
             }
             else if(n.toElement().tagName() == "couleur")
             {
-                couleur = n.toElement().toText().data();
+                elt = n.toElement();
+                couleur = elt.text();
             }
             n = n.nextSibling();
         }

@@ -10,6 +10,7 @@ Figure *ConstructeurPolygone::resoudre1(const QDomNode *d) const
     QDomElement objet = d->toElement();
     if(objet.tagName() == "polygone")
     {
+        QDomElement elt;
         float x1 = 0, y1= 0, x2 = 0, y2 = 0;
         QString couleur = "BLACK";
         QDomNode n = objet.firstChild();
@@ -24,11 +25,11 @@ Figure *ConstructeurPolygone::resoudre1(const QDomNode *d) const
                 {
                     if(p1.toElement().tagName() == "X")
                     {
-                        x1 = n.toElement().toText().data().toFloat();
+                        x1 = elt.text().toFloat();
                     }
                     else if(p1.toElement().tagName() == "Y")
                     {
-                        y1 = n.toElement().toText().data().toFloat();
+                        y1 = elt.text().toFloat();
                     }
                     p1 = p1.nextSibling();
                 }
@@ -72,8 +73,8 @@ Figure *ConstructeurPolygone::resoudre1(const QDomNode *d) const
             }
             else if(n.toElement().tagName() == "couleur")
             {
-                couleur = n.toElement().toText().data();
-                //poly->setC(couleur);
+                elt = n.toElement();
+                couleur = elt.text();
             }
             n = n.nextSibling();
         }

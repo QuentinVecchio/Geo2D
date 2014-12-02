@@ -7,7 +7,7 @@ ConstructeurCOR::ConstructeurCOR(ConstructeurCOR *s)
 
 Figure* ConstructeurCOR::resoudre (const QDomNode* d) const
 {
-    Figure * f = this->resoudre1(d);
+    Figure *f = this->resoudre1(d);
     if(f != NULL)
         return f;
     else

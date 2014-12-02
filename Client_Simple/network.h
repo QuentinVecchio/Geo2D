@@ -24,6 +24,7 @@ public:
     void setAdresseIp(const QString ip);
     void setPort(const QString p);
 
+    void close();
     void received();
     void send(QString s);
     void connecte();
