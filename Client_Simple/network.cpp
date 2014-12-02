@@ -8,6 +8,11 @@ Network::Network(const QString ip, const QString p)
     tailleMessage = 0;
 }
 
+void Network::close()
+{
+   this->socket->close();
+}
+
 QString Network::getAdresseIp() const
 {
     return this->adresseIp;
@@ -32,16 +37,12 @@ void Network::send(QString s)
 {
     socket->abort();
     socket->connectToHost(this->adresseIp,this->port.toInt());
-
     QByteArray paquet1;
     QDataStream out1(&paquet1, QIODevice::WriteOnly);
-
     QString messageAEnvoyer = s;
-
     out1 << messageAEnvoyer;
-
     socket->write(paquet1);
-    socket->close();
+    this->close();
 }
 
 void Network::received()
@@ -58,7 +59,6 @@ void Network::received()
 
     if (socket->bytesAvailable() < tailleMessage)
         return;
-
     QString messageRecu;
     in >> messageRecu;
     tailleMessage = 0;

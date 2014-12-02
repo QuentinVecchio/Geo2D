@@ -133,7 +133,7 @@ void Groupe::open(QString s)
         cout << "Erreur lecture de fichier." << endl;
         return;
     }
-    if (!this->dom->setContent(f))
+    if(this->dom->setContent(f))
     {
         //Appel des constructeurs
         ConstructeurCOR *COR = new ConstructeurCercle(NULL);
@@ -142,35 +142,33 @@ void Groupe::open(QString s)
         COR = new ConstructeurTriangle(COR);
         COR = new ConstructeurCarre(COR);
         COR = new ConstructeurRectangle(COR);
-        COR = new ConstructeurEllipse(COR);
-        COR = new ConstructeurGroupe(COR);
+        /*COR = new ConstructeurEllipse(COR);
+        COR = new ConstructeurGroupe(COR);*/
 
         //Initialisation XML
         QDomElement racine = this->dom->documentElement();
+        QDomElement elt;
         QDomNode *noeud = new QDomNode(racine.firstChild());//Recursive
         if(racine.nodeName() == "dessin")
         {
+            //Couleur du groupe
+            elt = noeud->toElement();
+            this->setC(Couleur::getNameCouleur(elt.text()));
+            *noeud = noeud->nextSibling();//On passe à l'objet suivant
             while(!noeud->isNull())
             {
-                if(noeud->toElement().tagName() == "couleur")
+                //On envoie le noeud à l'expert
+                Figure *f = COR->resoudre(noeud);
+                if(f == NULL)
                 {
-                    this->setC(Couleur::getNameCouleur(noeud->toText().data()));
+                    cout << "Erreur figure inconnu, fichier corrompu." << endl;
+                    return;
                 }
                 else
                 {
-                    //On envoie le noeud à l'expert
-                    Figure *f = COR->resoudre(noeud);
-                    if(f == NULL)
-                    {
-                        cout << "Erreur figure inconnu, fichier corrompu." << endl;
-                        return;
-                    }
-                    else
-                    {
-                        this->add(f);
-                        *noeud = noeud->nextSibling();//On passe à l'objet suivant
-                    }
+                    this->add(f);
                 }
+                *noeud = noeud->nextSibling();//On passe à l'objet suivant
             }
         }
         f->close();

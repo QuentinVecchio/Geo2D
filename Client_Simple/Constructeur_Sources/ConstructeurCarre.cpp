@@ -10,6 +10,7 @@ Figure* ConstructeurCarre::resoudre1(const QDomNode *d) const
     QDomElement objet = d->toElement();
     if(objet.tagName() == "carre")
     {
+        QDomElement elt;
         float x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0, x4 = 0, y4 = 0;
         QString couleur = "BLACK";
         QDomNode n = objet.firstChild();
@@ -20,35 +21,37 @@ Figure* ConstructeurCarre::resoudre1(const QDomNode *d) const
                 QDomNode p = n.toElement().firstChild();
                 while(!p.isNull())
                 {
+                    elt = p.toElement();
                     if(p.toElement().tagName() == "X")
                     {
                         if(x1 == 0)
-                            x1 = n.toElement().toText().data().toInt();
+                            x1 = elt.text().toFloat();
                         else if(x1 != 0 && x2 == 0)
-                            x2 = n.toElement().toText().data().toInt();
+                            x2 = elt.text().toFloat();
                         else if(x1 != 0 && x2 != 0 && x3 == 0)
-                            x3 = n.toElement().toText().data().toInt();
+                            x3 = elt.text().toFloat();
                         else
-                            x4 = n.toElement().toText().data().toInt();
+                            x4 = elt.text().toFloat();
 
                     }
                     else if(p.toElement().tagName() == "Y")
                     {
                         if(y1 == 0)
-                            y1 = n.toElement().toText().data().toInt();
+                            y1 = elt.text().toFloat();
                         else if(y1 != 0 && y2 == 0)
-                            y2 = n.toElement().toText().data().toInt();
+                            y2 = elt.text().toFloat();
                         else if(y1 != 0 && y2 != 0 && y3 == 0)
-                            y3 = n.toElement().toText().data().toInt();
+                            y3 = elt.text().toFloat();
                         else
-                            y4 = n.toElement().toText().data().toInt();
+                            y4 = elt.text().toFloat();
                     }
                     p = p.nextSibling();
                }
             }
             else if(n.toElement().tagName() == "couleur")
             {
-                couleur = n.toElement().toText().data();
+                elt = n.toElement();
+                couleur = elt.text();
             }
             n = n.nextSibling();
         }

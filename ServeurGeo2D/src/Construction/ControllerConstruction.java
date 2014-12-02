@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.StringReader;
 
+import javax.swing.JFrame;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -59,11 +60,12 @@ public class ControllerConstruction
 	public void appelConstructeurs()
 	{
 		//Création de la fenetre
-		Frame fenetre; 
-		fenetre = new Frame("Dessin");    
+		JFrame fenetre; 
+		fenetre = new JFrame("Dessin");    
 		fenetre.setBounds(30, 60, 800, 1200);              
 		fenetre.setVisible(true);
 		fenetre.setIgnoreRepaint(true);
+		fenetre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
 		int numBuffers = 1;
 		fenetre.createBufferStrategy(numBuffers);  
 		try 

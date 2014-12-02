@@ -3,7 +3,6 @@ package Connexion;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.net.Socket;
 
 import Construction.ControllerConstruction;
@@ -13,7 +12,6 @@ public class Connexion extends Thread
 {
 	private Socket socket;
 	private BufferedReader fluxEntrant;	
-	private PrintStream fluxSortant;
 	
 	public Connexion(Socket socket, ThreadGroup groupe) throws IOException
 	{
@@ -25,14 +23,6 @@ public class Connexion extends Thread
 		} 
 		catch (IOException e) {
 			new Erreur("Erreur paramètrage du flux entrant.");
-		}
-		try 
-		{
-			fluxSortant = new PrintStream(this.socket.getOutputStream());
-		} 
-		catch (IOException e) 
-		{
-			new Erreur("Erreur paramètrage du flux sortant.");
 		}
 	}
 	
@@ -51,8 +41,7 @@ public class Connexion extends Thread
 				}
 				System.out.println("Recu : " + data);
 			//Création du dessin
-				ControllerConstruction constructeur = new ControllerConstruction(data);
-			//Renvoie de l'image
+				new ControllerConstruction(data);
 			//Fermeture de la socket
 				try 
 				{
