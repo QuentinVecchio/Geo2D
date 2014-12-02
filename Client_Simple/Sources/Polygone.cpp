@@ -1,4 +1,5 @@
 #include "../Headers/Polygone.h"
+#include "../Headers/Point.h"
 #include <algorithm>
 
 Polygone::Polygone(const Point *p, const Couleur::Couleurs c) : Figure(p,c){}
@@ -13,6 +14,14 @@ Polygone::Polygone(const Point *p, const Couleur::Couleurs c ,const vector<Segme
 Polygone::Polygone(const Polygone &p) : Figure(p.getP1(),p.getC())
 {
     this->v = p.getV();
+}
+
+float Polygone::getAire()const{
+    float tmp = 0;
+    for (int i = 0; i < v.size(); i++) {
+       tmp += (this->v[i]->getP1()->getX() * this->v[i]->getP2()->getY() - this->v[i]->getP2()->getX() * this->v[i]->getP1()->getY()) ;
+    }
+    return tmp / 2;
 }
 
 void Polygone::add(Segment *s)
@@ -93,7 +102,7 @@ void Polygone::afficher(ostream &flux) const{
     for (int i = 0; i < v.size(); ++i) {
         this->v[i]->afficher(flux);
     }
-    flux << "]" << endl;
+    flux << ", Couleur = "  << Couleur::getCouleur(this->getC()).toStdString() << "]"<< endl;
 }
 
 ostream& operator <<(ostream& flux, const Polygone& p)

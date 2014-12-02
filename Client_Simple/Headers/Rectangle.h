@@ -21,6 +21,7 @@ public:
     void setP4(const Point *p);
 
     float getAire() const;
+    Point *getMilieu()const;
 
     void translation(const Point *p);
     void rotation(const Point *origine, double angle);

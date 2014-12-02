@@ -58,6 +58,14 @@ float Rectangle::getAire()const{
     return longueur->getLongueur() * largeur->getLongueur();
 }
 
+Point *Rectangle::getMilieu()const{
+    Segment *diag = new Segment(this->getP1(), this->getP3(), this->getC());
+    double newxdiag = (diag->getP1()->getX() + diag->getP2()->getX()) / 2;
+    double newydiag = (diag->getP1()->getY() + diag->getP2()->getY()) / 2;
+    Point *milieu = new Point(newxdiag, newydiag);
+    return milieu;
+}
+
 void Rectangle::translation(const Point *p)
 {
     this->setP1(Point(this->getP1()->getX() + p->getX(), this->getP1()->getY() + p->getY()).copy());
@@ -72,117 +80,117 @@ void Rectangle::translation(const Point *p)
 void Rectangle::rotation(const Point *origine, double angle)
 {
     if (origine == *this->getP1()){
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
+        double X2 = this->getP2()->getX() - origine->getX();
+        double Y2 = this->getP2()->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->getP2()->setX(newx2);
+        this->getP2()->setY(newy2);
 
-        float X3 = this->p3->getX() - origine->getX();
-        float Y3 = this->p3->getY() - origine->getY();
-        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
-        float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
+        double X3 = this->getP3()->getX() - origine->getX();
+        double Y3 = this->getP3()->getY() - origine->getY();
+        double newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        double newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
         this->p3->setX(newx3);
         this->p3->setY(newy3);
 
-        float X4 = this->p4->getX() - origine->getX();
-        float Y4 = this->p4->getY() - origine->getY();
-        float newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
-        float newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
-        this->p4->setX(newx4);
-        this->p4->setY(newy4);
+        double X4 = this->getP4()->getX() - origine->getX();
+        double Y4 = this->getP4()->getY() - origine->getY();
+        double newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
+        double newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
+        this->getP4()->setX(newx4);
+        this->getP4()->setY(newy4);
     }
-    else if (origine == *this->p2){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+    else if (origine == *this->getP2()){
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
 
-        float X3 = this->p3->getX() - origine->getX();
-        float Y3 = this->p3->getY() - origine->getY();
-        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
-        float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
+        double X3 = this->p3->getX() - origine->getX();
+        double Y3 = this->p3->getY() - origine->getY();
+        double newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        double newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
         this->p3->setX(newx3);
         this->p3->setY(newy3);
 
-        float X4 = this->p4->getX() - origine->getX();
-        float Y4 = this->p4->getY() - origine->getY();
-        float newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
-        float newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
-        this->p4->setX(newx4);
-        this->p4->setY(newy4);
+        double X4 = this->getP4()->getX() - origine->getX();
+        double Y4 = this->getP4()->getY() - origine->getY();
+        double newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
+        double newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
+        this->getP4()->setX(newx4);
+        this->getP4()->setY(newy4);
     }
     else if(origine == *this->p3){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
 
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
+        double X2 = this->p2->getX() - origine->getX();
+        double Y2 = this->p2->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->getP2()->setX(newx2);
+        this->getP2()->setY(newy2);
 
-        float X4 = this->p4->getX() - origine->getX();
-        float Y4 = this->p4->getY() - origine->getY();
-        float newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
-        float newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
-        this->p4->setX(newx4);
-        this->p4->setY(newy4);
+        double X4 = this->getP4()->getX() - origine->getX();
+        double Y4 = this->getP4()->getY() - origine->getY();
+        double newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
+        double newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
+        this->getP4()->setX(newx4);
+        this->getP4()->setY(newy4);
     }
-    else if(origine == *this->p4){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+    else if(origine == *this->getP4()){
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
 
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
+        double X2 = this->p2->getX() - origine->getX();
+        double Y2 = this->p2->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->getP2()->setX(newx2);
+        this->getP2()->setY(newy2);
 
-        float X3 = this->p3->getX() - origine->getX();
-        float Y3 = this->p3->getY() - origine->getY();
-        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        double X3 = this->p3->getX() - origine->getX();
+        double Y3 = this->p3->getY() - origine->getY();
+        double newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
         float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
         this->p3->setX(newx3);
         this->p3->setY(newy3);
     }
     else{
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
 
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
-        this->p2->setX(newx2);
-        this->p2->setY(newy2);
+        double X2 = this->getP2()->getX() - origine->getX();
+        double Y2 = this->getP2()->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        this->getP2()->setX(newx2);
+        this->getP2()->setY(newy2);
 
-        float X3 = this->p3->getX() - origine->getX();
-        float Y3 = this->p3->getY() - origine->getY();
-        float newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
+        double X3 = this->p3->getX() - origine->getX();
+        double Y3 = this->p3->getY() - origine->getY();
+        double newx3 = origine->getX() + X3 * cos(angle) - Y3 * sin(angle);
         float newy3 = origine->getY() + X3 * sin(angle) + Y3 * cos(angle);
         this->p3->setX(newx3);
         this->p3->setY(newy3);
 
-        float X4 = this->p4->getX() - origine->getX();
-        float Y4 = this->p4->getY() - origine->getY();
-        float newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
-        float newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
-        this->p4->setX(newx4);
-        this->p4->setY(newy4);
+        double X4 = this->getP4()->getX() - origine->getX();
+        double Y4 = this->getP4()->getY() - origine->getY();
+        double newx4 = origine->getX() + X4 * cos(angle) - Y4 * sin(angle);
+        double newy4 = origine->getY() + X4 * sin(angle) + Y4 * cos(angle);
+        this->getP4()->setX(newx4);
+        this->getP4()->setY(newy4);
     }
 }
 
@@ -193,27 +201,27 @@ void Rectangle::homothetie(const Point *centre, float rapport)
     }
     else{
         if(centre == *this->getP1()){
-            this->p2->setY(this->p2->getY() + rapport);
-            this->p3->setX(this->p3->getX() + rapport);
-            this->p3->setY(this->p3->getY() + rapport);
-            this->p4->setX(this->p4->getX() + rapport);
+            this->getP2()->setY(this->getP2()->getY() + rapport);
+            this->getP3()->setX(this->getP3()->getX() + rapport);
+            this->getP3()->setY(this->getP3()->getY() + rapport);
+            this->getP4()->setX(this->getP4()->getX() + rapport);
         }
-        else if(centre == *this->p2){
+        else if(centre == *this->getP2()){
             this->setP1(Point(this->getP1()->getX(), this->getP1()->getY() - rapport).copy());
-            this->p3->setX(this->p3->getX() + rapport);
-            this->p4->setX(this->p4->getX() + rapport);
-            this->p4->setY(this->p4->getY() - rapport);
+            this->getP3()->setX(this->getP3()->getX() + rapport);
+            this->getP4()->setX(this->getP4()->getX() + rapport);
+            this->getP4()->setY(this->getP4()->getY() - rapport);
         }
-        else if(centre == *this->p3){
+        else if(centre == *this->getP3()){
             this->setP1(Point(this->getP1()->getX() - rapport, this->getP1()->getY() - rapport).copy());
-            this->p2->setX(this->p2->getX() - rapport);
-            this->p4->setY(this->p4->getY() - rapport);
+            this->getP2()->setX(this->getP2()->getX() - rapport);
+            this->getP4()->setY(this->getP4()->getY() - rapport);
         }
-        else if(centre == *this->p4){
+        else if(centre == *this->getP4()){
             this->setP1(Point(this->getP1()->getX() - rapport, this->getP1()->getY()).copy());
-            this->p2->setX(this->p2->getX() - rapport);
-            this->p2->setY(this->p2->getY() + rapport);
-            this->p3->setY(this->p3->getY() + rapport);
+            this->getP2()->setX(this->getP2()->getX() - rapport);
+            this->getP2()->setY(this->getP2()->getY() + rapport);
+            this->getP3()->setY(this->getP3()->getY() + rapport);
         }
         else if(centre == Point(0.0, 0.0)){
             this->getP1()->setX(this->getP1()->getX() * rapport);

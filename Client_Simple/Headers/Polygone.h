@@ -9,7 +9,6 @@ class Polygone : public Figure
 {
 private:
     vector<Segment*> v;
-    float getAire()const{ return 0;}
 public:
     Polygone(const Point*p, const Couleur::Couleurs);
     Polygone(const Point *p, const Couleur::Couleurs, const vector<Segment*> polygone);
@@ -21,6 +20,7 @@ public:
     vector<Segment*> getV() const;
     Segment* getSegment(const int i)const;
 	int nbElements()const;
+    float getAire()const;
 
     void translation(const Point *p);
     void rotation(const Point *origine, double angle);

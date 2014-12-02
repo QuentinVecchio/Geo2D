@@ -43,31 +43,31 @@ void Segment::rotation(const Point *origine, double angle)
 {
     // Construction du nouveau point selon le point d'origine donné
     if (origine == *this->getP1()){
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        double X2 = this->p2->getX() - origine->getX();
+        double Y2 = this->p2->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
         this->p2->setX(newx2);
         this->p2->setY(newy2);
     }
     else if (origine == *this->p2){
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
     }
     else{
-        float X = this->getP1()->getX() - origine->getX();
-        float Y = this->getP1()->getY() - origine->getY();
-        float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
-        float newy = origine->getY() + X * sin(angle) + Y * cos(angle);
+        double X = this->getP1()->getX() - origine->getX();
+        double Y = this->getP1()->getY() - origine->getY();
+        double newx = origine->getX() + X * cos(angle) - Y * sin(angle);
+        double newy = origine->getY() + X * sin(angle) + Y * cos(angle);
         this->setP1(Point(newx, newy).copy());
 
-        float X2 = this->p2->getX() - origine->getX();
-        float Y2 = this->p2->getY() - origine->getY();
-        float newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
-        float newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
+        double X2 = this->getP2()->getX() - origine->getX();
+        double Y2 = this->getP2()->getY() - origine->getY();
+        double newx2 = origine->getX() + X2 * cos(angle) - Y2 * sin(angle);
+        double newy2 = origine->getY() + X2 * sin(angle) + Y2 * cos(angle);
         this->p2->setX(newx2);
         this->p2->setY(newy2);
     }

@@ -39,7 +39,6 @@ float Triangle::getAire()const{
     a = sqrt(pow((this->getP1()->getX() - this->p2->getX()), 2) + pow((this->getP1()->getY() - this->p2->getY()), 2));
     b = sqrt(pow((this->p2->getX() -  this->p3->getX()), 2) + pow((this->p2->getY() - this->p3->getY()), 2));
     c = sqrt(pow((this->p3->getX() - this->getP1()->getX()), 2) + pow((this->p3->getY() - this->getP1()->getY()), 2));
-    //cout << a << " / " << b << " / " << c << endl;
     // application de la formule de Héron
     P = a + b + c ;
     P = (P / 2) ;
@@ -101,7 +100,7 @@ void Triangle::rotation(const Point *origine, double angle)
         this->p2->setX(newx2);
         this->p2->setY(newy2);
     }
-    else if(origine == Point(0.0, 0.0)){
+    else{
         float X = this->getP1()->getX() - origine->getX();
         float Y = this->getP1()->getY() - origine->getY();
         float newx = origine->getX() + X * cos(angle) - Y * sin(angle);
